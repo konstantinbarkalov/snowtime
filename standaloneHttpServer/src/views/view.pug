@@ -30,7 +30,7 @@ block content
             h1 Задержка звука
             p.lead На устройстве
           .grid.col.elem
-            p По словам Злочевского, в России собрали 140 миллионов тонн зерна. Предыдущий рекорд зафиксирован в 1978 году, когда было собрано 127,8 миллиона тонн. Из-за высокого урожая цены на зерно обвалились, добавил Злочевский.
+            p Постарайтесь, насколько это возможно, точно синхронизровать звук ("тс-тс-тс") и видео (вспышки снежинок). Дело в том, что задержка задержка в аудиотракте зависит от конкретного устройства и её никак невозможно определить программно. По-этому, её приходится подбирать вручную. Особенно важно это для сетевого режима - чтобы все устройства звучали синхронно и попадали в такт.
           .grid.col.elem
             .cirpad.cirpad--hor#cirpad--system-audio-lag
               .cirpad__pad-outer
@@ -41,10 +41,8 @@ block content
               .cirpad-value__value
               .cirpad-value__subvalue
           .grid.col.elem#video-quality
-            h1 Качество видео
+            h1 Количество частиц
             p.lead Графоний
-          .grid.col.elem
-            p По словам Злочевского, в России собрали 140 миллионов тонн зерна. Предыдущий рекорд зафиксирован в 1978 году, когда было собрано 127,8 миллиона тонн. Из-за высокого урожая цены на зерно обвалились, добавил Злочевский.
           .grid.col.elem
             .cirpad.cirpad--hor#cirpad--video-quality
               .cirpad__pad-outer
@@ -56,7 +54,8 @@ block content
               .cirpad-value__subvalue
           .grid.col.elem
             h1 Громкость
-
+          .grid.col.elem
+            p Совет: не нужно пытаться сделать громко. Лучше всего получится, если музыка будет играть едва слышно. Можно даже выключить звук совсем.
           .grid.col.elem
             .cirpad.cirpad--hor#cirpad--volume-theme
               .cirpad__pad-outer
@@ -72,6 +71,8 @@ block content
           .grid.col.elem
             .beat-time-display
           .grid.col.elem
+            p Эта "крутушка" влияет на то, сколько одновременно семплов будет воспроизводиться. Этакая мера полифонии. Не знаю, как назвать. Обратите внимание, что изменения наступают не сразу, а "раз в квадрат" — тогда когда 4:4:4 на музыкальном таймере сменяются на 1:1:1
+          .grid.col.elem
             .remoted-cirpad#remoted-cirpad--power
               .cirpad.cirpad--hor
                 .cirpad__pad-outer
@@ -82,7 +83,7 @@ block content
                   .cirpad__sub-element
                     | Polyforte
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера
@@ -99,7 +100,7 @@ block content
                   .cirpad__sub-element
                     | Snowpad
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера
@@ -116,7 +117,7 @@ block content
                   .cirpad__sub-element
                     | Delair
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера
@@ -133,7 +134,7 @@ block content
                   .cirpad__sub-element
                     | devtre
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера
@@ -151,7 +152,7 @@ block content
                   .cirpad__sub-element
                     | devqua
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера
@@ -187,7 +188,7 @@ block content
                   .cirpad__sub-element
                     | devqui
                   .cirpad__sub-element
-                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
                     a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
                       | С сервера

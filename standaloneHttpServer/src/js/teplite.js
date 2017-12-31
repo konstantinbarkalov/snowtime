@@ -60,8 +60,8 @@ function Teplite() {
     }
     that.isSyncingMetro = false;
     that.volumeThemeRatio = 0.5;
-    that.volumeMetroRatio = 0.5;
-    that.videoQualityRatio = 0.5;
+    that.volumeMetroRatio = 0.0;
+    that.videoQualityRatio = 0.25;
     that.stat = {
       frame: {
         ps: 30,

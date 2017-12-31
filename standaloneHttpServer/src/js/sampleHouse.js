@@ -575,7 +575,7 @@ function SampleHouse() {
       name: 'base mvp song metros',
       metas: [
         {
-          url: '/audio/teplite-mvp-chapter-a-hats-4.mp3',
+          url: '/audio/teplite-mvp-chapter-a-hats-2.mp3',
           startAtime: 0,
           endAtime: 2 / teplite.optionset.bpm * 60,
           isLoop: true,
