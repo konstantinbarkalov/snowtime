@@ -16,5 +16,13 @@ function gracefulShutdown(callback) {
     callback();
     process.exit();
   });
+  process.on("SIGHUP", function () {
+    callback();
+    process.exit();
+  });
+  process.on("SIGHTERM", function () {
+    callback();
+    process.exit();
+  });
 }
 module.exports = gracefulShutdown;
