@@ -27,7 +27,7 @@ block content
             //.debug-bratio-fn-renderer
             button#button-fullscreen На полный экран
           .grid.col.elem
-            h1 Задержка звука
+            h1#audio-sync Задержка звука
             p.lead На устройстве
           .grid.col.elem
             p Постарайтесь, насколько это возможно, точно синхронизровать звук ("тс-тс-тс") и видео (вспышки снежинок). Дело в том, что задержка задержка в аудиотракте зависит от конкретного устройства и её никак невозможно определить программно. По-этому, её приходится подбирать вручную. Особенно важно это для сетевого режима - чтобы все устройства звучали синхронно и попадали в такт.
@@ -229,7 +229,7 @@ block content
                 select.connector__server
                   //option(value='http://localhost:2019') Локалхост 2019
                   //option(value='http://localhost:2018') Локалхост 2018
-                  option(value='http://spb.snowtime.fun:2018', selected=true) Эпсилон
+                  option(value='http://spb.snowtime.fun:2018', selected=true) Сервер в Питербурге
                   //option(value='http://mqutie.termo-master.ru:2019', selected=true) Эпсилон
                   //option(value='http://localhost:2019') Дельта
                 input.connector__server
@@ -241,7 +241,7 @@ block content
                 input.connector__password
               .form-line.form-line--no-label
                 button.connector__connect подключиться
-
+            .topcard
   include includes/statusbar.pug
   include includes/gritter.pug
   include includes/audioAwaiter.pug
