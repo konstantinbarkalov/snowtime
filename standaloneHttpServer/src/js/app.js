@@ -374,7 +374,7 @@ cirpadVideoQuality.onInput = function(videoQualityBratios){
   $cirpadSubvalueVideoQuality.text(textSubvalue);
   localStorage.setItem('videoQualityRatio', videoQualityRatio);
 }
-let cirpadVideoQualityBratios = [0,0,0];
+let cirpadVideoQualityBratios = [teplite.videoQualityRatio * 2 - 1, 0, 0];
 let loadeCirpadVideoQualityRatioJson = localStorage.getItem('videoQualityRatio');
 if (loadeCirpadVideoQualityRatioJson) {
   cirpadVideoQualityBratios = [parseFloat(loadeCirpadVideoQualityRatioJson) * 2 - 1, 0];
