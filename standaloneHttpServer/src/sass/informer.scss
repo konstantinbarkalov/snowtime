@@ -1,0 +1,23 @@
+.informer {
+  display: none;
+  &.informer--active {
+    display: flex;
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-index-informer;
+  background: #323b49;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  h1.informer__header {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  p.informer__message {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

@@ -1,0 +1,37 @@
+.gritter {
+  display: flex;
+  pointer-events: none;
+  &.gritter--hidden {
+    display: none;
+  }
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-index-gritter;
+  .gritter__grit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 40px;
+    padding: 2px 4px;
+    font-size: 9px;
+    line-height: 10px;
+    background-color: rgba(24,24,24,0.5);
+    &.gritter__grit--warn {
+      background-color: rgba(160, 0, 0, 0.5);
+    }
+    &.gritter__grit--dev {
+      background-color: rgba(0, 0, 160, 0.5);
+    }
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .gritter {
+    .gritter__grit {
+      font-size: 6px;
+      line-height: 7px;
+    }
+  }
+}

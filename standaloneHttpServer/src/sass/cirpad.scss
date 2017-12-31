@@ -1,0 +1,186 @@
+@import 'variables';
+// cirpad regular
+$cirpad-regular-handle-size: 64px;
+$cirpad-regular-border-radius: 16px;
+$cirpad-regular-handle-peep-size: 48px;
+$cirpad-regular-border-width: 2px;
+$cirpad-regular-gap: 8px;
+
+$cirpad-regular-border-color: rgba(255, 255, 255, 0.2);
+$cirpad-regular-hande-peep-background-color: rgba(255, 255, 255, 0.1);
+$cirpad-regular-hande-peep-border-color: rgba(255, 255, 255, 1);
+$cirpad-regular-pad-background-color: rgba(255, 255, 255, 0);
+
+// cirpad active
+$cirpad-active-handle-size: $cirpad-regular-handle-size;
+$cirpad-active-border-radius: $cirpad-regular-border-radius;
+$cirpad-active-handle-peep-size: 64px;
+$cirpad-active-border-width: $cirpad-regular-border-width;
+$cirpad-active-gap: $cirpad-regular-gap;
+
+$cirpad-active-border-color: rgba(255, 255, 255, 0.8);
+$cirpad-active-hande-peep-background-color: rgba(255, 255, 255, 0.2);
+$cirpad-active-hande-peep-border-color: rgba(255, 255, 255, 1);
+$cirpad-active-pad-background-color: rgba(255, 255, 255, 0.1);
+
+@mixin cirpad($handle-size,
+              $border-radius,
+              $handle-peep-size,
+              $border-width,
+              $gap,
+              $border-color,
+              $hande-peep-background-color,
+              $hande-peep-border-color,
+              $pad-background-color) {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  .cirpad__pad-outer {
+    display: flex;
+    flex-direction: row;
+    border-color: $border-color;
+    border-style: solid;
+    border-width: $border-width;
+    transition: border-color 1s;
+    transform: translateZ(0);
+  }
+
+
+  .cirpad__pad-outer, .cirpad__pad-inner {
+    border-radius: 9999px; // hack for mobile chrome, that does not fully support border-radius: 50%
+    flex-grow: 1;
+  }
+
+
+
+  &.cirpad--hor {
+    .cirpad__pad-outer {
+      height: 30px;
+    }
+  }
+  &.cirpad--rect {
+    .cirpad__pad-outer {
+      height: 300px;
+    }
+  }
+
+  &.cirpad--circle {
+    .cirpad__pad-outer {
+      height: 300px;
+      //height: 600px - 32px;
+    }
+  }
+
+  &.cirpad--rect, &.cirpad--hor, &.cirpad--vert {
+    .cirpad__pad-outer {
+      border-radius: ($border-radius + $gap + $border-width);
+    }
+    .cirpad__pad-inner {
+      border-radius: $border-radius;
+    }
+  }
+  .cirpad__pad-inner {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    position: relative;
+    //background-color: $pad-background-color;
+    // turned off for perf resasons TODO: remove completely with variables
+    margin: $gap;
+    //transition: background-color 3s;
+  }
+  .cirpad__handle {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: $handle-size;
+    height: $handle-size;
+    margin: -($handle-size / 2);
+    transition: margin 0.2s, width 0.2s, height 0.2s;
+  }
+  .cirpad__handle-peep {
+    width: $handle-peep-size;
+    height: $handle-peep-size;
+    margin: ($handle-size - $handle-peep-size) / 2;
+    background-color: $hande-peep-background-color;
+    border-color: $hande-peep-border-color;
+    border-style: solid;
+    border-width: $border-width;
+    border-radius: 9999px; // hack for mobile chrome, that does not fully support border-radius: 50%
+    transition: border-color 0.2s, background-color 0.2s, margin 0.2s, width 0.2s, height 0.2s;
+  }
+  .cirpad__sub {
+    font-size: 10px;
+    text-transform: uppercase;
+    //text-align: center;
+    text-shadow: 0 0 1px black, 0 0 2px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4px;
+    //margin-bottom: -16px;
+    height: 12px;
+    line-height: 12px;
+  }
+  .cirpad__sub-element {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.cirpad {
+  @include cirpad($cirpad-regular-handle-size,
+                  $cirpad-regular-border-radius,
+                  $cirpad-regular-handle-peep-size,
+                  $cirpad-regular-border-width,
+                  $cirpad-regular-gap,
+                  $cirpad-regular-border-color,
+                  $cirpad-regular-hande-peep-background-color,
+                  $cirpad-regular-hande-peep-border-color,
+                  $cirpad-regular-pad-background-color);
+  .cirpad__handle {
+    cursor: -webkit-grab;
+  }
+  &.cirpad--handle-active {
+    @include cirpad($cirpad-active-handle-size,
+                    $cirpad-active-border-radius,
+                    $cirpad-active-handle-peep-size,
+                    $cirpad-active-border-width,
+                    $cirpad-active-gap,
+                    $cirpad-active-border-color,
+                    $cirpad-active-hande-peep-background-color,
+                    $cirpad-active-hande-peep-border-color,
+                    $cirpad-active-pad-background-color);
+    .cirpad__pad-outer {
+      will-change: border-color;
+    }
+    .cirpad__handle {
+      cursor: -webkit-grabbing;
+      will-change: transform;
+    }
+    .cirpad__handle-peep {
+      will-change: border-color, background-color, margin, width, height;
+    }
+    .cirpad__pad-inner {
+      will-change: background-color;
+    }
+  }
+}
+
+.remoted-cirpad {
+  a.remoted-cirpad__button {
+    margin-left: 8px;
+    color: #aaa;
+    text-shadow: none;
+    text-decoration: none;
+    &:hover {
+      color: #eee;
+    }
+    &.remoted-cirpad__button--active {
+      color: #fff;
+      text-shadow: 0 0 1px black, 0 0 2px black; //same as .cirpad__sub
+      text-decoration: underline;
+    }
+  }
+}
+

@@ -1,0 +1,136 @@
+$gutter: 32px;
+
+.grid {
+  display: flex;
+  &.row {
+    flex-direction: row;
+  }
+  &.col {
+    flex-direction: column;
+  }
+  &.cont {
+    margin: (-$gutter / 2);
+  }
+  &.elem {
+    margin: ($gutter / 2);
+  }
+  &.g4 {
+    &.cont {
+      margin: (-$gutter / 2 / 4);
+    }
+    &.elem {
+      margin: ($gutter / 2 / 4);
+    }
+  }
+  &.g8 {
+    &.cont {
+      margin: (-$gutter / 2 / 2);
+    }
+    &.elem {
+      margin: ($gutter / 2 / 2);
+    }
+  }
+  &.g16 {
+    &.cont {
+      margin: (-$gutter / 2 * 2);
+    }
+    &.elem {
+      margin: ($gutter / 2 * 2);
+    }
+  }
+  &.g64 {
+    &.cont {
+      margin: (-$gutter / 2 * 4);
+    }
+    &.elem {
+      margin: ($gutter / 2 * 4);
+    }
+  }
+  &.gh {
+    &.cont, &.elem {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+  &.gv {
+    &.cont, &.elem {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.ju-co-ce {
+    justify-content: center;
+  }
+  &.ju-co-sb {
+    justify-content: space-between;
+  }
+  &.ju-co-fe {
+    justify-content: flex-end;
+  }
+  &.al-it-ce {
+    align-items: center;
+  }
+  &.grow {
+    flex-grow: 1;
+  }
+  &.no-shrink {
+    flex-shrink: 0;
+  }
+  &.miw-600 {
+    min-width: 600px;
+  }
+  &.miw-400 {
+    min-width: 400px;
+  }
+  &.miw-200 {
+    min-width: 200px;
+  }
+  &.maw-600 {
+    max-width: 600px;
+  }
+  &.maw-400 {
+    max-width: 400px;
+  }
+  &.maw-200 {
+    max-width: 200px;
+  }
+  &.full {
+    width: 100%;
+  }
+  &.half {
+    width: 100% / 2 * 1;
+  }
+  &.third {
+    width: 100% / 3 * 1;
+  }
+  &.third-2 {
+    width: 100% / 3 * 2;
+  }
+  &.quater {
+    width: 100% / 4 * 1;
+  }
+  &.quater-2 {
+    width: 100% / 4 * 2;
+  }
+  &.quater-3 {
+    width: 100% / 4 * 3;
+  }
+
+  ////  responsive
+  @media screen and (max-width: 700px) {
+    &.full, &.half, &.third, &.third-2, &.quater, &.quater-2, &.quater-3 {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    &.miw-600, &.miw-400, &.miw-200 {
+      min-width: 0;
+    }
+  }
+  //// /responsive
+}
+
+

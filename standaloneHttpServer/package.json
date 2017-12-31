@@ -1,0 +1,22 @@
+{
+  "name": "teplite-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "standaloneHttpServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node standaloneHttpServer.js"
+  },
+  "author": "Konstantin Barkalov <mail@barkalov.ru>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "event-emitter": "^0.3.5",
+    "express": "^4.16.2",
+    "express-babelify-middleware": "^0.2.1",
+    "node-sass-middleware": "^0.11.0",
+    "pug": "^2.0.0-rc.4",
+    "socket.io-client": "^2.0.4",
+    "winston": "^2.4.0"
+  }
+}

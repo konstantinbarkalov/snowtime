@@ -1,0 +1,143 @@
+@import 'variables';
+@import 'reset';
+@import 'typo';
+@import 'form';
+@import 'grid';
+@import 'errorer';
+@import 'informer';
+@import 'audioAwaiter';
+@import 'statusbar';
+@import 'gritter';
+@import 'connector';
+@import 'cirpad';
+@import 'faq';
+.snow-stencil {
+  height: 330px;
+  width: 100%;
+  position: relative;
+  background-image: url(/img/snow-stencil.svg);
+  background-size: auto 330px;
+  background-position: 50%;
+  background-repeat: repeat;
+}
+.cut-here {
+  height: 64px;
+  width: 100%;
+  background-image: url(/img/cut-here-dash.svg);
+  background-repeat: repeat-x;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 29px;
+  line-height: 56px;
+  font-weight: 100;
+  text-transform: uppercase;
+  &.cut-here--top {
+    background-image: url(/img/cut-here-dash.svg), url(/img/cut-here-knife.svg);
+    background-repeat: repeat-x, no-repeat;
+  }
+}
+.debug-bratio-fn-renderer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.holo {
+  position: fixed;
+  transform: translateZ(0);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .holo__canvas-wrapper {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  .holo__canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+////  content
+.content {
+  position: relative;
+}
+.spaceview {
+  height: 120%;
+  width: 100%;
+  position: relative;
+}
+.content { // not a bem
+  &.content--top {
+    background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 40%, rgba(255, 96, 0, 0.2) 70%, rgba(255, 192, 0, 0.1) 80%, rgba(255, 255, 0, 0));
+    background-size: 100% 1400px;
+    background-repeat: repeat-x;
+  }
+  &.content--post {
+    background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 40%, rgba(255, 96, 0, 0.2) 70%, rgba(255, 192, 0, 0.1) 80%, rgba(255, 255, 0, 0));
+    background-size: 100% 1400px;
+    background-repeat: repeat-x;
+  }
+  &.content--pre {
+    background: #0c0014;
+  }
+  .topcard {
+    height: 32px;
+    //TODO & rename 'card'
+  }
+  .spacercard {
+    height: 200px;
+    //TODO & rename 'card'
+  }
+  .bottomcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    font-size: 32px;
+    height: 128px;
+    //now same as .beat-time-display
+    //TODO & rename 'card'
+  }
+
+  .cirpad-value {
+    margin-top: 16px;
+    .cirpad-value__value {
+      font-size: 32px;
+    }
+    .cirpad-value__subvalue {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  p.lead { //same as .cirpad-value__subvalue
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .beat-time-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    font-size: 32px;
+    height: 128px;
+    will-change: contents;
+  }
+
+  .debug-display {
+    font-size: 12px;
+    font-family: monospace;
+  }
+
+
+}
+//// /content
+

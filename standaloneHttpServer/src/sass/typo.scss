@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic');
+body {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  background: #333;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0
+}
+h1 {
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 100;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
+h2 {
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+h3 {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+p {
+  font-size: 14px;
+  line-height: 22px;
+}

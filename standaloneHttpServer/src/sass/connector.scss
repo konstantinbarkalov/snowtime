@@ -1,0 +1,8 @@
+.connector {
+  input.connector__server {
+    display: none;
+  }
+  button.connector__connect:disabled {
+    cursor: progress;
+  }
+}

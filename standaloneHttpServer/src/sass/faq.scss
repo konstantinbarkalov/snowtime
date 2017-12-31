@@ -1,0 +1,14 @@
+.faq {
+  .faq__expander {
+    //display: flex;
+    display: none;
+    flex-direction: column;
+    max-height: 0;
+    transition: max-height 1s;
+    &.faq__expander--expanded {
+      display: flex;
+      flex-direction: column;
+      max-height: 1000px;
+    }
+  }
+}

@@ -1,0 +1,248 @@
+extends layout
+
+block content
+  .holo
+    .holo__canvas-wrapper
+      canvas.holo__canvas
+  .content.content--pre
+    .topcard
+    .topcard
+    .topcard
+    .topcard
+
+
+  .snow-stencil
+  .content.content--top
+    .grid.col.elem.gh
+      //grid root
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            .topcard
+            h1 snowtime.fun
+            //h1 snowpad.online
+          .grid.col.elem
+            include includes/faq.pug
+          .grid.col.elem
+            //.debug-bratio-fn-renderer
+            button#button-fullscreen На полный экран
+          .grid.col.elem
+            h1 Задержка звука
+            p.lead На устройстве
+          .grid.col.elem
+            p По словам Злочевского, в России собрали 140 миллионов тонн зерна. Предыдущий рекорд зафиксирован в 1978 году, когда было собрано 127,8 миллиона тонн. Из-за высокого урожая цены на зерно обвалились, добавил Злочевский.
+          .grid.col.elem
+            .cirpad.cirpad--hor#cirpad--system-audio-lag
+              .cirpad__pad-outer
+                .cirpad__pad-inner
+                  .cirpad__handle
+                    .cirpad__handle-peep
+            .cirpad-value#cirpad-value--system-audio-lag
+              .cirpad-value__value
+              .cirpad-value__subvalue
+          .grid.col.elem#video-quality
+            h1 Качество видео
+            p.lead Графоний
+          .grid.col.elem
+            p По словам Злочевского, в России собрали 140 миллионов тонн зерна. Предыдущий рекорд зафиксирован в 1978 году, когда было собрано 127,8 миллиона тонн. Из-за высокого урожая цены на зерно обвалились, добавил Злочевский.
+          .grid.col.elem
+            .cirpad.cirpad--hor#cirpad--video-quality
+              .cirpad__pad-outer
+                .cirpad__pad-inner
+                  .cirpad__handle
+                    .cirpad__handle-peep
+            .cirpad-value#cirpad-value--video-quality
+              .cirpad-value__value
+              .cirpad-value__subvalue
+          .grid.col.elem
+            h1 Громкость
+
+          .grid.col.elem
+            .cirpad.cirpad--hor#cirpad--volume-theme
+              .cirpad__pad-outer
+                .cirpad__pad-inner
+                  .cirpad__handle
+                    .cirpad__handle-peep
+  .cut-here
+  .content.content--main
+    .grid.col.elem.gh
+      //grid root
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            .beat-time-display
+          .grid.col.elem
+            .remoted-cirpad#remoted-cirpad--power
+              .cirpad.cirpad--hor
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | Polyforte
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+          .grid.col.elem
+            .remoted-cirpad#remoted-cirpad--haze
+              .cirpad.cirpad--rect
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | Snowpad
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+          .grid.col.elem
+            .remoted-cirpad#remoted-cirpad--devuno
+              .cirpad.cirpad--hor
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | Delair
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+          .grid.col.elem
+            .remoted-cirpad#remoted-cirpad--devtre
+              .cirpad.cirpad--circle
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | devtre
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+
+          .grid.col.elem
+            .remoted-cirpad#remoted-cirpad--devqua
+              .cirpad.cirpad--hor
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | devqua
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+
+          //- .grid.col.elem
+          //-   .remoted-cirpad#remoted-cirpad--devdos
+          //-     .cirpad.cirpad--hor
+          //-       .cirpad__pad-outer
+          //-         .cirpad__pad-inner
+          //-           .cirpad__handle
+          //-             .cirpad__handle-peep
+          //-       .cirpad__sub
+          //-         .cirpad__sub-element
+          //-           | Metrohat
+          //-         .cirpad__sub-element
+          //-           a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+          //-             | Автопилот
+          //-           a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+          //-             | С сервера
+          //-           a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+          //-             | На сервер
+
+          //.grid.col.elem
+            .remoted-cirpad#remoted-cirpad--devqui
+              .cirpad.cirpad--circle
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | devqui
+                  .cirpad__sub-element
+                    a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
+
+
+          //.grid.col.elem
+          //  .topcard
+          //.grid.col.elem
+          //  h1 Диагностика задежек
+          //  p.lead для разработки
+          //.grid.col.elem
+          //  h3 Клиент-серверные задержки
+          //  .debug-display.debug-display--lag-display
+          //.grid.col.elem
+          //  h3 Задержки внутренних таймеров
+          //  .debug-display.debug-display--diff-display
+          .grid.col.elem
+            .bottomcard
+  .cut-here пустой экран
+  .spaceview
+  .cut-here
+  .content.content--post
+    .grid.col.elem.gh
+      //grid root
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            .topcard
+            h1#connector Подключение к серверу
+            p.lead сетевой режим
+          .grid.col.elem
+            p Объединение устройств в ансамбль, позоляет синхронизровать их и управлять ими с одного устройства, в этом режимя вся соль.
+            .connector
+              .form-line
+                label сервер
+                select.connector__server
+                  //option(value='http://localhost:2019') Локалхост 2019
+                  //option(value='http://localhost:2018') Локалхост 2018
+                  option(value='http://spb.snowtime.fun:2018', selected=true) Эпсилон
+                  //option(value='http://mqutie.termo-master.ru:2019', selected=true) Эпсилон
+                  //option(value='http://localhost:2019') Дельта
+                input.connector__server
+              .form-line
+                label навание комнаты
+                input.connector__roomname
+              .form-line
+                label пароль
+                input.connector__password
+              .form-line.form-line--no-label
+                button.connector__connect подключиться
+
+  include includes/statusbar.pug
+  include includes/gritter.pug
+  include includes/audioAwaiter.pug
+  include includes/errorer.pug
+  include includes/informer.pug

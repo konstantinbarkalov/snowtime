@@ -1,0 +1,33 @@
+.errorer {
+  display: none;
+  &.errorer--active {
+    display: flex;
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-index-errorer;
+  background: #4c2020;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  .errorer__oops {
+    font-size: 220px;
+    line-height: 1;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.1);
+  }
+  .errorer__error {
+    margin-bottom: 16px;
+
+  }
+  p {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  a {
+    color: #fff;
+  }
+}

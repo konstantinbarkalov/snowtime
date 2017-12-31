@@ -1,0 +1,13 @@
+.errorer
+  .grid.col.maw-600.no-shrink
+    .grid.elem.col
+      .errorer__oops ой
+      h1 К сожалению, что-то сломалось
+    .grid.elem.col
+      p
+        | Произошло что-то незапланированное и единственное, что остается — попробовать
+        |
+        a.errorer__restart-button(href='javascript:window.stop();location.reload(true);') перезагрузить страницу
+        | . Список ошибок ниже (правда он непонятный). Главное, что ошибка отправлена разработчику, и бетмэн придет на помошь, сразу как только проснется.
+    .grid.elem.col
+      .errorer__errors-list

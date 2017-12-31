@@ -1,0 +1,134 @@
+.statusbar
+  .statusbar__blocks
+    .statusbar__block.statusbar__block--net-ptime-lag-mean
+      .statusbar__block-value
+      .statusbar__block-ready-ratio
+    .statusbar__block.statusbar__block--cs-ptime-lag-deviation
+      .statusbar__block-value
+      .statusbar__block-ready-ratio
+    a.statusbar__block.statusbar__block--pa-diff-deviation(href='javascript:void(0);')
+      .statusbar__block-value
+      .statusbar__block-ready-ratio
+    a.statusbar__block.statusbar__block--frame-stat(href='javascript:void(0);')
+      .statusbar__block-value
+    a.statusbar__block.statusbar__block--phisic-stat(href='javascript:void(0);')
+      .statusbar__block-value
+    a.statusbar__block.statusbar__block--net-stat(href='javascript:void(0);')
+      .statusbar__block-value
+
+  .statusbar__bars
+    .statusbar__bar.statusbar__bar--audiosamples-download
+      .statusbar__bar-ready-ratio.statusbar__bar-ready-ratio--audiosamples-download
+    .statusbar__bar.statusbar__bar--textures-download
+      .statusbar__bar-ready-ratio.statusbar__bar-ready-ratio--textures-download
+  .statusbar__statusinfos
+    .statusinfo.statusinfo--net-ptime-lag-mean
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Сетевремелаг
+            p.lead Напиши да
+          .grid.col.elem
+            p Среднее:
+              =' '
+              span.statusinfo__mean
+              =' '
+            .statusinfo__humanized
+          .grid.col.elem
+            button.statusinfo__resync Повторить замер
+          .grid.col.elem
+            button.statusinfo__close Закрыть
+
+    .statusinfo.statusinfo--cs-ptime-lag-deviation
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Отклонения сетевремелага
+            p.lead хер объяснишь же
+          .grid.col.elem
+            p Стандартное отклонение:
+              =' '
+              span.statusinfo__deviation
+              =' '
+            .statusinfo__humanized
+          .grid.col.elem
+            button.statusinfo__resync Повторить замер
+          .grid.col.elem
+            button.statusinfo__close Закрыть
+
+    .statusinfo.statusinfo--pa-diff-deviation
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Аудио-таймер
+            p.lead насколько аудиовремя расходится с системным.
+          .grid.col.elem
+            p Стандартное отклонение:
+              =' '
+              span.statusinfo__deviation
+              =' '
+            .statusinfo__humanized
+          .grid.col.elem
+            button.statusinfo__resync Повторить замер
+          .grid.col.elem
+            button.statusinfo__close Закрыть
+
+    .statusinfo.statusinfo--frame-stat
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Графика
+            p.lead нагрузка на видеокарту
+          .grid.row
+            .grid.col.half.elem
+              p Кадры в секунду:
+                =' '
+                span.statusinfo__ps
+              .statusinfo__humanized.statusinfo__humanized--ps
+            .grid.col.half.elem
+              p Нагрузка на CPU:
+                =' '
+                span.statusinfo__duty
+              .statusinfo__humanized.statusinfo__humanized--duty
+          .grid.col.elem
+            button.statusinfo__close Закрыть
+
+    .statusinfo.statusinfo--phisic-stat
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Физика
+            p.lead нагрузка на процессор
+          .grid.row
+            .grid.col.half.elem
+              p Кадры в секунду:
+                =' '
+                span.statusinfo__ps
+              .statusinfo__humanized.statusinfo__humanized--ps
+            .grid.col.half.elem
+              p Нагрузка на CPU:
+                =' '
+                span.statusinfo__duty
+              .statusinfo__humanized.statusinfo__humanized--duty
+          .grid.col.elem
+            button.statusinfo__close Закрыть
+
+    .statusinfo.statusinfo--net-stat
+      .grid.col.al-it-ce
+        .grid.col.full.maw-600
+          .grid.col.elem
+            h3 Сеть
+            p.lead напиши сюда
+          .grid.row
+            .grid.col.half.elem
+              p Подключение:
+                =' '
+                span.statusinfo__is-connected
+              .statusinfo__humanized.statusinfo__humanized--is-connected
+            .grid.col.half.elem
+              p Последний сигнал получен:
+                =' '
+                span.statusinfo__last-signal-ptime
+              .statusinfo__humanized.statusinfo__humanized--last-signal-ptime
+          .grid.col.elem
+            button.statusinfo__close Закрыть

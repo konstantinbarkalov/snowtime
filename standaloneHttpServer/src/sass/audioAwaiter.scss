@@ -1,0 +1,23 @@
+.audio-awaiter {
+  display: none;
+  &.audio-awaiter--active {
+    display: flex;
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-index-audio-awaiter;
+  background: #210e33;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  h1.audio-awaiter__header {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  p.audio-awaiter__message {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

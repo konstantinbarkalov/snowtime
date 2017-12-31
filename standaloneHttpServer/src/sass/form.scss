@@ -1,0 +1,41 @@
+$label-height: 24px;
+input, textarea, select, button {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  background: rgba(24, 24, 24, 0.5);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px;
+  width: 100%;
+  height: 48px;
+  &:disabled {
+    background: rgba(128, 128, 128, 0.8);
+    cursor: not-allowed;
+  }
+}
+button {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border-color: rgba(24, 24, 24, 0.5);
+}
+
+select {
+  padding: 8px 4px;
+}
+option {
+  background: white;
+  color: black;
+}
+label {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: $label-height;
+}
+.form-line {
+  margin: 16px 0;
+  &.form-line--no-label {
+    margin-top: 16px + $label-height;
+  }
+}
