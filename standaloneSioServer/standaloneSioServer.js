@@ -6,7 +6,10 @@ let os = require('os'); //TODO: check
 let Sio = require('socket.io');
 let SioServer = require('./sioServer');
 
-let sio = Sio(null);
+let sio = Sio(null, {
+  maxHttpBufferSize: 1024 * 10, //10 kbytes
+  serveClient: false,
+});
 let sioServer = SioServer(sio);
 
 let port = parseInt(process.env.PORT, 10) || 2018;
