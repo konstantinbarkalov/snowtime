@@ -17,7 +17,7 @@ app.use('/css', sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'src', 'sass'),
     dest: path.join(__dirname, 'static', 'css'),
-    debug: true,
+    debug: false,
     outputStyle: 'compressed',
 }));
 app.use('/js/app.js', babelify('src/js/app.js'));
