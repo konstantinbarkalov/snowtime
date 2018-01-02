@@ -17,14 +17,14 @@ const AudioAwaiter = require('./audioAwaiter.js');
 function Teplite() {
   let that = this;
   function preinit() {
+    window.teplite = that;
+    ee(that);
     that.audioAwaiter = new AudioAwaiter($('.audio-awaiter'));
-    that.audioAwaiter.readyPromise.then(()=>{
+    that.initPromise = that.audioAwaiter.readyPromise.then(()=>{
       init();
     });
   }
   function init() {
-    ee(that);
-    window.teplite = that;
     that.halt = false; // big red stop button (use teplite.setEmit('halt', true);)
     //that.audioCtx = audioCtx;
     // audioCtx will be loaded after audioAwaiter will be clicked
