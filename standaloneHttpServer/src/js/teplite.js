@@ -16,6 +16,11 @@ const Informer = require('./informer.js');
 const AudioAwaiter = require('./audioAwaiter.js');
 function Teplite() {
   let that = this;
+  function preinit() {
+    that.audioAwaiter.readyPromise.then(()=>{
+      init();
+    });
+  }
   function init() {
     ee(that);
     window.teplite = that;
@@ -190,7 +195,7 @@ function Teplite() {
     }
     return that.on(pathString, callback);
   }
-  init();
+  preinit();
 }
 //ee(Teplite.prototype);
 new Teplite();
