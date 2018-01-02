@@ -17,6 +17,7 @@ const AudioAwaiter = require('./audioAwaiter.js');
 function Teplite() {
   let that = this;
   function preinit() {
+    that.audioAwaiter = new AudioAwaiter($('.audio-awaiter'));
     that.audioAwaiter.readyPromise.then(()=>{
       init();
     });
@@ -100,7 +101,7 @@ function Teplite() {
     that.holo = new Holo($('.holo'));
     that.sioClient = new SioClient();
     that.informer = new Informer($('.informer'));
-    that.audioAwaiter = new AudioAwaiter($('.audio-awaiter'));
+
 
     that.readyPromise = Promise.all([
       that.smootherGod.readyPromise || true,
