@@ -11,17 +11,12 @@ function AudioAwaiter($audioAwaiter) {
     that.readyPromise = new Promise((resolve)=>{
       readyResolve = resolve;
     })
-    // https://stackoverflow.com/questions/9038625/detect-if-device-is-ios
-    let isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-    if (isIos) {
-      $closeButton = $audioAwaiter.find('.audio-awaiter__close-button');
-      $message = $audioAwaiter.find('.audio-awaiter__message');
-      $header = $audioAwaiter.find('.audio-awaiter__header');
-      $closeButton.on('click', hideAudioAwaiter);
-      showAudioAwaiter();
-    } else {
-      readyResolve();
-    }
+
+    $closeButton = $audioAwaiter.find('.audio-awaiter__close-button');
+    $message = $audioAwaiter.find('.audio-awaiter__message');
+    $header = $audioAwaiter.find('.audio-awaiter__header');
+    $closeButton.on('click', hideAudioAwaiter);
+    showAudioAwaiter();
   }
   function showAudioAwaiter() {
     $audioAwaiter.addClass('audio-awaiter--active');
