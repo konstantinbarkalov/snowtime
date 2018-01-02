@@ -24,11 +24,13 @@ function AudioAwaiter($audioAwaiter) {
 
   function hideAudioAwaiter() {
     $audioAwaiter.removeClass('audio-awaiter--active');
-    enableWebAudioOnIos();
+    enableWebAudio();
     readyResolve();
   }
-  function enableWebAudioOnIos() {
-    // for iOS dirty workaround
+  function enableWebAudio() {
+    const audioCtx = require('./audioCtx.js');
+    teplite.audioCtx = audioCtx;
+
     // create empty buffer
     let buffer = teplite.audioCtx.createBuffer(1, 1, 22050);
     let source = teplite.audioCtx.createBufferSource();

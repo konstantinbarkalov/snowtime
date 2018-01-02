@@ -1,6 +1,7 @@
 'use strict';
 const ee = require('event-emitter');
-const audioCtx = require('./audioCtx.js');
+//const audioCtx = require('./audioCtx.js');
+// audioCtx will be loaded after audioAwaiter will be clicked
 const Gritter = require('./gritter.js');
 const Statusbar = require('./statusbar.js');
 const SmootherGod = require('./smootherGod.js');
@@ -19,7 +20,8 @@ function Teplite() {
     ee(that);
     window.teplite = that;
     that.halt = false; // big red stop button (use teplite.setEmit('halt', true);)
-    that.audioCtx = audioCtx;
+    //that.audioCtx = audioCtx;
+    // audioCtx will be loaded after audioAwaiter will be clicked
     that.hazeBratios = [0,0,0];
     that.remoteHazeBratios = [0,0,0];
     that.hazeIsAutopilot = false;
