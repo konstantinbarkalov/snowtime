@@ -11,7 +11,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "readline": "^1.3.0",
-    "socket.io": "^2.0.4",
-    "winston": "^2.4.0"
+    "socket.io": "^2.2.0",
+    "winston": "^3.2.1"
   }
 }

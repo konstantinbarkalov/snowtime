@@ -10,13 +10,13 @@
   "author": "Konstantin Barkalov <mail@barkalov.ru>",
   "license": "UNLICENSED",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.19.0",
     "event-emitter": "^0.3.5",
-    "express": "^4.16.2",
+    "express": "^4.17.1",
     "express-babelify-middleware": "^0.2.1",
     "node-sass-middleware": "^0.11.0",
-    "pug": "^2.0.0-rc.4",
-    "socket.io-client": "^2.0.4",
-    "winston": "^2.4.0"
+    "pug": "^2.0.4",
+    "socket.io-client": "^2.2.0",
+    "winston": "^3.2.1"
   }
 }

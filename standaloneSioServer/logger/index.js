@@ -1,7 +1,7 @@
 'use strict';
 let Winston = require("winston");
 
-let logger = new Winston.Logger({
+let logger = Winston.createLogger({
   transports: [
     new Winston.transports.Console({
       level: process.env.MQUTIE_LOGLEVEL || "info",
@@ -11,7 +11,7 @@ let logger = new Winston.Logger({
     })
   ]
 });
-logger.dbg = new Winston.Logger({ //secondary logger
+logger.dbg = Winston.createLogger({ //secondary logger
   transports: [
     new Winston.transports.Console({
       level: "debug",
