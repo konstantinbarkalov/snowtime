@@ -1,6 +1,6 @@
 'use strict';
 const logger = require("./logger");
-
+const noCache = false; // for dev
 let path = require('path');
 let express = require('express');
 let sassMiddleware = require('node-sass-middleware');
@@ -21,8 +21,14 @@ app.use('/css', sassMiddleware({
     outputStyle: 'compressed',
 }));
 app.use('/js/app.js', babelify('src/js/app.js'));
-const oneHour = 1000 * 60 * 60 * 0;
-app.use(express.static(path.join(__dirname, 'static'), {immutable: true, maxAge: oneHour }));
+
+const expressStaticOptions = {};
+const oneHour = 1000 * 60 * 60 * 1;
+if (!noCache) {
+  expressStaticOptions.immutable = true;
+  expressStaticOptions.maxAge = oneHour;
+}
+app.use(express.static(path.join(__dirname, 'static'), expressStaticOptions));
 
 
 app.use('/', router);
