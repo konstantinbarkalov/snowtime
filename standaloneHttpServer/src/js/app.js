@@ -358,7 +358,10 @@ teplite.initPromise.then(()=>{
   let $cirpadSubvalueVideoQuality = $('#cirpad-value--video-quality .cirpad-value__subvalue');
   cirpadVideoQuality.onInput = function(videoQualityBratios){
     let videoQualityRatio = (videoQualityBratios[0] + 1 ) / 2;
-    teplite.setEmit('videoQualityRatio', videoQualityRatio, cirpadVideoQuality);
+    let isPressed = videoQualityBratios[2];
+    if (!isPressed) { // only after user end interracts with ui, to not to spam video system reinitialisation
+      teplite.setEmit('videoQualityRatio', videoQualityRatio, cirpadVideoQuality);
+    }
     let textSubvalue;
     if (videoQualityRatio < 0.2) {
       textSubvalue = 'графика на уровне слабого смартфона'

@@ -80,7 +80,6 @@ function Cirpad($container, mode, stepsCount) {
   let isMouseOnHandleDown = false;
 
   let touchHandleIdentifier = false;
-  let touchPadIdentifier= false;
 
   function handleOnTouchStart(event){
     touchHandleIdentifier = wrapTouchStartAsMouseDown(event, handleOnMouseDown);
