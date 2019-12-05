@@ -6,7 +6,7 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
   let remoteIsAutopilot = false;
   let remoteBratios = null;
   let bratios = null;
-  let $cirad = $container.find('.cirpad');
+  let $cirpad = $container.find('.cirpad');
   let $buttonAutopilot = $container.find('.remoted-cirpad__button--autopilot');
   let $buttonSend = $container.find('.remoted-cirpad__button--send');
   let $buttonReceive = $container.find('.remoted-cirpad__button--receive');
@@ -67,7 +67,7 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
     $buttonSend.toggleClass('remoted-cirpad__button--active', isSend);
   }
 
-  let cirpad = new Cirpad($cirad, mode, stepsCount);
+  let cirpad = new Cirpad($cirpad, mode, stepsCount);
   cirpad.onInput = function(newBratios) {
     bratios = newBratios;
     setIsInput(bratios[2] === 1);
@@ -80,6 +80,9 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
         that.onUpdateRemoteBratios(remoteBratios);
       }
     }
+  }
+  cirpad.onInfo = function() {
+    if (that.onInfo) { that.onInfo(); };
   }
   autopilot.onAutopilotUpdate = function(newAutopilotBratios) {
     let remoteIsInput = isReceive && remoteBratios && remoteBratios[2] === 1;
@@ -100,6 +103,7 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
   that.onUpdateBratios = null;
   that.onUpdateRemoteBratios = null;
   that.onUpdateRemoteIsAutopilot = null;
+  that.onInfo = null;
   that.setRemoteBratios = function(newRemoteBratios) {
     remoteBratios = newRemoteBratios;
     if (isReceive && !isInput) {

@@ -21,7 +21,7 @@ app.use('/css', sassMiddleware({
     outputStyle: 'compressed',
 }));
 app.use('/js/app.js', babelify('src/js/app.js'));
-const oneHour = 1000 * 60 * 60;
+const oneHour = 1000 * 60 * 60 * 0;
 app.use(express.static(path.join(__dirname, 'static'), {immutable: true, maxAge: oneHour }));
 
 

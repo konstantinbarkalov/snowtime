@@ -1,8 +1,6 @@
 'use strict';
 function Informer($informer) {
   let that = this;
-  const maxErrorsCount = 10;
-  let errorsCount = 0;
   let $closeButton = null;
   let $message = null;
   let $header = null;
@@ -24,5 +22,8 @@ function Informer($informer) {
     $informer.removeClass('informer--active');
   }
   init();
+  that.showInformer = function(informSet) {
+    showInformer(informSet);
+  }
 }
 module.exports = Informer;

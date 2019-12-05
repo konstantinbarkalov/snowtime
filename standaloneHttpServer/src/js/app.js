@@ -68,20 +68,43 @@ teplite.initPromise.then(()=>{
   let cirpadVolumeTheme = new Cirpad($('#cirpad--volume-theme'), 'hor');
   let cirpadVolumeMetro = new Cirpad($('#cirpad--volume-metro'), 'hor');
 
+  const cirpadInfos = require('./text/cirpadInfos.js');
+
   let hazeAutopilot = new HazeAutopilot();
   let remotedCirpadHaze = new RemotedCirpad($('#remoted-cirpad--haze'), 'rect', null, hazeAutopilot);
+  remotedCirpadHaze.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.haze);
+  };
   let powerAutopilot = new HazeAutopilot();
   let remotedCirpadPower = new RemotedCirpad($('#remoted-cirpad--power'), 'hor', null, powerAutopilot);
+  remotedCirpadPower.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.power);
+  };
   let devunoAutopilot = new DevdosAutopilot();
   let remotedCirpadDevuno = new RemotedCirpad($('#remoted-cirpad--devuno'), 'hor', 7, devunoAutopilot);
+  remotedCirpadDevuno.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.devuno);
+  };
   let devdosAutopilot = new DevdosAutopilot();
   let remotedCirpadDevdos = new RemotedCirpad($('#remoted-cirpad--devdos'), 'hor', 6, devdosAutopilot);
+  remotedCirpadDevdos.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.devdos);
+  };
   let devtreAutopilot = new DevdosAutopilot();
   let remotedCirpadDevtre = new RemotedCirpad($('#remoted-cirpad--devtre'), 'circle', null, devtreAutopilot);
+  remotedCirpadDevtre.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.devtre);
+  };
   let devquaAutopilot = new DevdosAutopilot();
   let remotedCirpadDevqua = new RemotedCirpad($('#remoted-cirpad--devqua'), 'hor', null, devquaAutopilot);
+  remotedCirpadDevqua.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.devqua);
+  };
   let devquiAutopilot = new DevdosAutopilot();
   let remotedCirpadDevqui = new RemotedCirpad($('#remoted-cirpad--devqui'), 'circle', null, devquiAutopilot);
+  remotedCirpadDevqui.onInfo = function(){
+    teplite.informer.showInformer(cirpadInfos.devqui);
+  };
 
   teplite.on('remoteHazeBratios', (remoteHazeBratios)=>{
     remotedCirpadHaze.setRemoteBratios(remoteHazeBratios);
@@ -154,7 +177,9 @@ teplite.initPromise.then(()=>{
     // +1 because of one-based holo
   }
   teplite.squareTimer.holoLaglessSquareCallback = function(beatNum) {
-
+    $powerMeterScale.style = {
+      width: remotedCirpadPower.bratios
+    }
   }
   teplite.squareTimer.audioLaglessBeatCallback = function(beatNum) {
     //let atime = teplite.audioCtx.currentTime - teplite.squareTimer.partyStartedAtime;
@@ -217,6 +242,7 @@ teplite.initPromise.then(()=>{
 
   remotedCirpadPower.onUpdateBratios = function(powerBratios){
     teplite.setEmit('powerBratios', powerBratios, remotedCirpadPower);
+    
   }
   remotedCirpadPower.onUpdateRemoteBratios = function(remotePowerBratios){
     teplite.setEmit('remotePowerBratios', remotePowerBratios, remotedCirpadPower);
@@ -421,6 +447,7 @@ teplite.initPromise.then(()=>{
   //// cirpadVolumeMetro
 
   let $beatTimeDisplay = $('.beat-time-display');
+  let $powerMeterScale = $('.power-meter-scale');
   let $lagDisplay = $('.debug-display--lag-display');
   let $diffDisplay = $('.debug-display--diff-display');
 

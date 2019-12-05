@@ -10,6 +10,7 @@ function Cirpad($container, mode, stepsCount) {
   // and no gaps in angles (to cover border-radius zone)
   let $padInner = $container.find('.cirpad__pad-inner');
   let $padOuter = $container.find('.cirpad__pad-outer');
+  let $infoLink = $container.find('.cirpad__info-link');
   let width = null;
   let height = null;
   let bratios = [0,0];
@@ -41,6 +42,10 @@ function Cirpad($container, mode, stepsCount) {
       resize();
     });
     resize(); // updateHandlePosition() inside
+
+    $infoLink.on('click',(event)=>{
+      infoLinkOnClick(event);
+    })
   }
   function resize() {
     width = $padInner.innerWidth();
@@ -77,8 +82,12 @@ function Cirpad($container, mode, stepsCount) {
       transform: `translate3d(${innerLeft}px, ${innerTop}px, 0)`,
     });
   }
-  let isMouseOnHandleDown = false;
 
+  function infoLinkOnClick(event) {
+    if (that.onInfo) { that.onInfo(); }
+  };
+
+  let isMouseOnHandleDown = false;
   let touchHandleIdentifier = false;
 
   function handleOnTouchStart(event){
@@ -191,6 +200,7 @@ function Cirpad($container, mode, stepsCount) {
   }
 
   that.onInput = null;
+  that.onInfo = null;
   that.setBratios = function(newBratios) {
     bratios = newBratios;
     updateHandlePosition();
