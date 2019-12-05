@@ -13,10 +13,8 @@ function Cirpad($container, mode, stepsCount) {
   let width = null;
   let height = null;
   let bratios = [0,0];
-  let padChangedBratios = [0,0]; // when pressed on pad (not on handle)
 
-  let padIntervalId = null;
-  function init() {
+    function init() {
     let $window = $(window);
     $padOuter.on('mousedown',(event)=>{
       handleOnMouseDown(event);

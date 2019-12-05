@@ -15,8 +15,6 @@ app.set('port', port);
 
 let httpServer = http.createServer(app);
 
-
-
 //// Listen on provided port, on all network interfaces.
 
 httpServer.listen(port);
