@@ -75,13 +75,25 @@
 }
 .content { // not a bem
   &.content--top {
-    background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 40%, rgba(255, 96, 0, 0.2) 70%, rgba(255, 192, 0, 0.1) 80%, rgba(255, 255, 0, 0));
-    background-size: 100% 1400px;
+    padding-bottom: 128px;
+    background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 50%, rgba(255, 96, 0, 0.2) 75%, rgba(255, 192, 0, 0.1) 90%, rgba(255, 255, 0, 0));
+    background-size: 100% 1600px;
+    background-repeat: repeat-x;
+    background-color: rgba(0, 0, 0, 0.705);
+    transition: background-color 1s;
+    &.content--see-through { // to see canvas when tweaking audio delay
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+  &.content--main {
+    background: linear-gradient(#e4ff0036, #ff3b003d, #ffffff00);
+    background-size: 100% 128px;
+    padding-top: 128px;
     background-repeat: repeat-x;
   }
   &.content--post {
     background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 40%, rgba(255, 96, 0, 0.2) 70%, rgba(255, 192, 0, 0.1) 80%, rgba(255, 255, 0, 0));
-    background-size: 100% 1400px;
+    background-size: 100% 1600px;
     background-repeat: repeat-x;
   }
   &.content--pre {
@@ -127,7 +139,8 @@
     align-items: center;
     text-align: center;
     justify-content: flex-end;
-    font-size: 32px;
+    font-size: 80px;
+    font-weight: 100;
     height: 128px;
     will-change: contents;
   }

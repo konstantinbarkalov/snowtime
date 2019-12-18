@@ -30,7 +30,7 @@ block content
             h1#audio-sync Задержка звука
             p.lead На устройстве
           .grid.col.elem
-            p Возможно вам придется, синхронизровать звук ("тс-тс-тс") с видео (вспышки снежинок). Дело в том, что задержка в аудиотракте зависит от конкретного устройства и её никак невозможно определить программно. По-этому, её приходится подбирать вручную. Особенно важно это для сетевого режима - чтобы все устройства звучали синхронно и попадали в такт.
+            p Необходимо вручную синхронизировать звук с изображением: зажать бегунок до появления звука маракасов («тс-тс-тс») и соотнести его со вспышками. Это особенно важно для сетевого режима, чтобы все устройства звучали синхронно.
           .grid.col.elem
             .cirpad.cirpad--hor#cirpad--system-audio-lag
               .cirpad__pad-outer
@@ -62,7 +62,6 @@ block content
                 .cirpad__pad-inner
                   .cirpad__handle
                     .cirpad__handle-peep
-  .cut-here
   .content.content--main
     .grid.col.elem.gh
       //grid root
@@ -70,8 +69,6 @@ block content
         .grid.col.full.maw-600
           .grid.col.elem
             .beat-time-display
-          .grid.col.elem
-            p Этот ползунок влияет на то, сколько одновременно семплов будет воспроизводиться. Этакая мера полифонии. Не знаю, как назвать. Обратите внимание, что изменения наступают не сразу, а "раз в квадрат" — когда 4:4:4 на музыкальном таймере сменяются на 1:1:1
           .grid.col.elem
             .remoted-cirpad#remoted-cirpad--power
               .cirpad.cirpad--hor
@@ -136,7 +133,7 @@ block content
                 .cirpad__sub
                   .cirpad__sub-element
                     a.cirpad__info-link(href='javascript:void(0);')
-                      | devtre
+                      | Colorama
                   .cirpad__sub-element
                     //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
@@ -155,7 +152,7 @@ block content
                 .cirpad__sub
                   .cirpad__sub-element
                     a.cirpad__info-link(href='javascript:void(0);')
-                      | devqua
+                      | Intencio
                   .cirpad__sub-element
                     //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
                       | Автопилот
@@ -164,23 +161,23 @@ block content
                     a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
                       | На сервер
 
-          //- .grid.col.elem
-          //-   .remoted-cirpad#remoted-cirpad--devdos
-          //-     .cirpad.cirpad--hor
-          //-       .cirpad__pad-outer
-          //-         .cirpad__pad-inner
-          //-           .cirpad__handle
-          //-             .cirpad__handle-peep
-          //-       .cirpad__sub
-          //-         .cirpad__sub-element
-          //-           | Metrohat
-          //-         .cirpad__sub-element
-          //-           a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-          //-             | Автопилот
-          //-           a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-          //-             | С сервера
-          //-           a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-          //-             | На сервер
+          //.grid.col.elem
+            .remoted-cirpad#remoted-cirpad--devdos
+              .cirpad.cirpad--hor
+                .cirpad__pad-outer
+                  .cirpad__pad-inner
+                    .cirpad__handle
+                      .cirpad__handle-peep
+                .cirpad__sub
+                  .cirpad__sub-element
+                    | Metrohat
+                  .cirpad__sub-element
+                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                      | Автопилот
+                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                      | С сервера
+                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                      | На сервер
 
           //.grid.col.elem
             .remoted-cirpad#remoted-cirpad--devqui
@@ -235,7 +232,7 @@ block content
                 select.connector__server
                   //option(value='http://localhost:2020') Локалхост 2020
                   //option(value='http://localhost:2020') Локалхост 2020
-                  option(value='http://snowtime.fun:2020', selected=true) Тест-сервер во Франкфурте
+                  option(value='http://localhost:2020', selected=true) Тест-сервер во Франкфурте
                   //option(value='http://mqutie.termo-master.ru:2020', selected=true) Эпсилон
                   //option(value='http://localhost:2020') Дельта
                 input.connector__server

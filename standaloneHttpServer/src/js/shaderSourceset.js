@@ -61,6 +61,7 @@ void main() {
 
   v_beatHashedRgb = v_beatHashedRgb * (1.0 + pow(a_seed[1], 1.0 / u_masterLumaFactor) * 10.0);
 
+  // streakRatio
   float outerNum = u_beatNum * u_hatonomFreq;
   float inerPerOuter = u_hatonomFreq;
   float interNum = outerNum / inerPerOuter;
@@ -77,6 +78,8 @@ void main() {
   } else {
     v_streakRatio = 0.0 * a_glVelocity[0] * u_glPhisicBeatNumDiff;
   }
+  // streakRatio
+
   v_radialRatio = pow(distance(vec2(0.0, 0.0), gl_Position.xy / gl_Position.ww), 3.0);
   v_horisontalRatio = cos(gl_Position.x * 2.0 / 0.75 + 2.0  / 0.75 * u_beatNum * 3.14159) / 5.0 + 0.5;
 
@@ -130,12 +133,29 @@ attribute vec4 a_position;
 attribute vec2 a_texcoord;
 
 uniform mat4 u_matrix;
-
+uniform float u_beatNum;
+uniform float u_hatonomFreq;
 varying vec2 v_texcoord;
+varying float v_streakRatio;
 
 void main() {
   gl_Position = u_matrix * a_position;
   v_texcoord = a_texcoord;
+
+  // streakRatio
+  float outerNum = u_beatNum * u_hatonomFreq;
+  float inerPerOuter = u_hatonomFreq;
+  float interNum = outerNum / inerPerOuter;
+  float interNumMod = mod(interNum, 1.0);
+  float streakSineRatio;
+  if (mod(outerNum, 1.0) < 0.5) {
+    streakSineRatio = (1.0 + cos(outerNum * 3.14159 * 2.0)) / 2.0;
+  } else {
+    streakSineRatio = 0.0;
+  }
+  v_streakRatio = pow(streakSineRatio, 1.0 / u_hatonomFreq);
+  // streakRatio
+
 }
 `;
 shaderSourceset.fragment.scaper = `
@@ -156,7 +176,7 @@ uniform vec4 u_color1;
 uniform vec4 u_color2;
 uniform float u_beatNum;
 varying vec2 v_texcoord;
-
+varying float v_streakRatio;
 
 
 void main() {
@@ -174,6 +194,9 @@ void main() {
   gl_FragColor = texture2D(u_texture_city, v_texcoord) +
                  texture2D(u_textureHardLight, modified_texcoord0) * u_color0 +
                  texture2D(u_textureSoftLight, modified_texcoord1) * u_color1;
+  if (v_streakRatio > 0.0) {
+    gl_FragColor = (gl_FragColor + v_streakRatio * 0.05)  * (1.0 + v_streakRatio * 2.0 );
+  }
 
   // /city
   //  flare

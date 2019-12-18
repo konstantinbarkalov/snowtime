@@ -11,4 +11,18 @@
       max-height: 1000px;
     }
   }
+  .faq__expander-toggle-text {
+    &.faq__expander-toggle-text--hide {
+      display: none;
+      &.faq__expander-toggle-text--expanded {
+        display: block;
+      }
+    }
+    &.faq__expander-toggle-text--show {
+      display: block;
+      &.faq__expander-toggle-text--expanded {
+        display: none;
+      }
+    }
+  }
 }

@@ -49,7 +49,6 @@ require('./teplite.js'); // global teplite singleton imported
 teplite.initPromise.then(()=>{
   teplite.gritter.addGrit('Начинаем');
   // TODO: goto teplite, same as gritter
-
   const Connector = require('./connector.js');
   let connector = new Connector($('.connector'));
 
@@ -242,7 +241,7 @@ teplite.initPromise.then(()=>{
 
   remotedCirpadPower.onUpdateBratios = function(powerBratios){
     teplite.setEmit('powerBratios', powerBratios, remotedCirpadPower);
-    
+
   }
   remotedCirpadPower.onUpdateRemoteBratios = function(remotePowerBratios){
     teplite.setEmit('remotePowerBratios', remotePowerBratios, remotedCirpadPower);
@@ -340,12 +339,22 @@ teplite.initPromise.then(()=>{
   ////  cirpadSystemAudioLag
   let $cirpadValueSystemAudioLag = $('#cirpad-value--system-audio-lag .cirpad-value__value');
   let $cirpadSubvalueSystemAudioLag = $('#cirpad-value--system-audio-lag .cirpad-value__subvalue');
+  let $contentTop = $('.content.content--top'); // to see canvas when tweaking audio delay
+  let isSyncingMetro = false;
   cirpadSystemAudioLag.onInput = function(audioLagBratios){
     if (audioLagBratios[2]) {
       //enable metronome on all devices during SystemAudioLag tuning
       teplite.setEmit('isSyncingMetro', true, cirpadSystemAudioLag);
+      if (!isSyncingMetro) {
+        isSyncingMetro = true;
+        $contentTop.addClass('content--see-through');
+      }
     } else {
       teplite.setEmit('isSyncingMetro', false, cirpadSystemAudioLag);
+      if (isSyncingMetro) {
+        isSyncingMetro = false;
+        $contentTop.removeClass('content--see-through');
+      }
     }
     let ptime = (audioLagBratios[0] + 1) * 250; // 0 to 500
     teplite.squareLooper.setAudioLag(ptime);

@@ -6,7 +6,7 @@ const gracefulShutdown = require('./gracefulShutdown.js');
 let SioServer = function(sio) {
   let parties = {};
   function onShutdown() {
-    sio.emit('inform', {headerText: 'Сорян', messageText: 'Этот сервер отправлен в перезагрузку. Судя по всему накатывается обновление или что-то вроде того.'});
+    sio.emit('inform', {headerHtml: 'Сорян', messageHtml: 'Этот сервер отправлен в перезагрузку. Судя по всему накатывается обновление или что-то вроде того.'});
     sio.emit('partyOver');
     console.log('gracefully shutdown');
   }

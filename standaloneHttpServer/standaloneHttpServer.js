@@ -8,7 +8,7 @@ let app = require('./app');
 
 //// Get port from environment and store in Express.
 
-let port = parseInt(process.env.PORT, 10) || 83;
+let port = parseInt(process.env.PORT, 10) || 80;
 app.set('port', port);
 
 //// Create HTTP server.

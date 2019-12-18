@@ -14,8 +14,8 @@ function Informer($informer) {
   }
   function showInformer(informSet) {
     $informer.addClass('informer--active');
-    $message.text(informSet.messageText);
-    $header.text(informSet.headerText || 'Тынц');
+    $message.html(informSet.messageHtml);
+    $header.html(informSet.headerHtml || 'Тынц');
   }
 
   function hideInformer() {

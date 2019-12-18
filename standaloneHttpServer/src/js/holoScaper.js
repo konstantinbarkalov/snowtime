@@ -30,6 +30,7 @@ function holoScaper(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
   let color2Location = null;
   let beatNumLocation = null;
   let masterLumaFactorLocation = null;
+  let hatonomFreqLocation = null;
 
   // Create a buffer.
   let positionBuffer = null;
@@ -69,6 +70,7 @@ function holoScaper(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     color2Location = gl.getUniformLocation(program, "u_color2");
     beatNumLocation = gl.getUniformLocation(program, "u_beatNum");
     masterLumaFactorLocation = gl.getUniformLocation(program, "u_masterLumaFactor");
+    hatonomFreqLocation = gl.getUniformLocation(program, "u_hatonomFreq");
 
     // Create a buffer.
     positionBuffer = gl.createBuffer();
@@ -226,7 +228,22 @@ function holoScaper(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     gl.uniform4f(color2Location, beatHashedRgbs[2].r, beatHashedRgbs[2].g, beatHashedRgbs[2].b, 1);
     gl.uniform1f(beatNumLocation, beatNum%256);
     gl.uniform1f(masterLumaFactorLocation, masterLumaFactor);
-
+    const hatonomFreqs = [
+      1,
+      2,
+      4,
+      6,
+      8,
+      12
+    ]
+    let hatonomFreq;
+    let hatonomFreqsId = teplite.squareLooper.playingMetroAudiosamplesId;
+    if (hatonomFreqsId !== null) {
+      hatonomFreq = hatonomFreqs[hatonomFreqsId];
+    } else {
+      hatonomFreq = 0;
+    }
+    gl.uniform1f(hatonomFreqLocation, hatonomFreq);
 
     // draw the quad (2 triangles, 6 vertices)
     gl.drawArrays(gl.TRIANGLES, 0, 6);
