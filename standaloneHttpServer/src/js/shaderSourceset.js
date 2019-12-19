@@ -14,6 +14,7 @@ precision highp float;
 
 uniform float u_beatNum;
 uniform float u_hatonomFreq;
+uniform float u_pointSizeFactor;
 uniform mat4 u_matrix;
 uniform vec4 u_color0;
 uniform vec4 u_color1;
@@ -44,7 +45,7 @@ void main() {
 
   if (v_distance > 0.0) {
     float distanceFactor = (1.0 / v_distance);
-    gl_PointSize = 12.0 * distanceFactor * v_unfocusFactor;
+    gl_PointSize = u_pointSizeFactor * distanceFactor * v_unfocusFactor;
   } else {
     gl_PointSize = 0.0;
   }

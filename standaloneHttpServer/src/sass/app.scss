@@ -11,6 +11,9 @@
 @import 'connector';
 @import 'cirpad';
 @import 'faq';
+body.body--full-screen::-webkit-scrollbar {
+  display: none;
+}
 .snow-stencil {
   height: 330px;
   width: 100%;

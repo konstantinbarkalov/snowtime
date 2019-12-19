@@ -25,6 +25,7 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
   let textureTstLocation = null;
   let textureHardLightLocation = null;
   let textureSoftLightLocation = null;
+  let pointSizeFactorLocation = null;
   let color0Location = null;
   let color1Location = null;
   let color2Location = null;
@@ -44,6 +45,7 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
   let positionBuffer = null;
   let glVelocityBuffer = null;
   let seedBuffer = null;
+
   let beatHashedRgbsIndexBuffer = null;
   let videotextures = [];
 
@@ -70,13 +72,13 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     glVelocityLocation = gl.getAttribLocation(program, "a_glVelocity");
     beatHashedRgbsIndexLocation = gl.getAttribLocation(program, "a_beatHashedRgbsIndex");
     seedLocation = gl.getAttribLocation(program, "a_seed");
-
     // lookup uniforms
     matrixLocation = gl.getUniformLocation(program, "u_matrix");
     textureSnowflakeLocation = gl.getUniformLocation(program, "u_textureSnowflake");
     textureTstLocation = gl.getUniformLocation(program, "u_textureTst");
     textureHardLightLocation = gl.getUniformLocation(program, "u_textureHardLight");
     textureSoftLightLocation = gl.getUniformLocation(program, "u_textureSoftLight");
+    pointSizeFactorLocation = gl.getUniformLocation(program, "u_pointSizeFactor");
     color0Location = gl.getUniformLocation(program, "u_color0");
     color1Location = gl.getUniformLocation(program, "u_color1");
     color2Location = gl.getUniformLocation(program, "u_color2");
@@ -197,6 +199,8 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     gl.uniform1i(textureTstLocation, 1);
     //gl.uniform1i(textureHardLightLocation, 1);
     //gl.uniform1i(textureSoftLightLocation, 2);
+    let pointSizeFactor = teplite.pointSizeFactor * 900 / Math.sqrt(snowflakesCount);
+    gl.uniform1f(pointSizeFactorLocation, pointSizeFactor);
     gl.uniform4f(color0Location, beatHashedRgbs[0].r, beatHashedRgbs[0].g, beatHashedRgbs[0].b, 1);
     gl.uniform4f(color1Location, beatHashedRgbs[1].r, beatHashedRgbs[1].g, beatHashedRgbs[1].b, 1);
     gl.uniform4f(color2Location, beatHashedRgbs[2].r, beatHashedRgbs[2].g, beatHashedRgbs[2].b, 1);

@@ -70,6 +70,7 @@ function Teplite() {
     that.volumeThemeRatio = 0.25;
     that.volumeMetroRatio = 0.0;
     that.videoQualityRatio = 0.25;
+    that.pointSizeFactor = 1;
     that.stat = {
       frame: {
         ps: 30,

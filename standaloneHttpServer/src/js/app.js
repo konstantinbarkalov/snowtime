@@ -527,15 +527,17 @@ teplite.initPromise.then(()=>{
     teplite.statusbar.setPaDiffDeviation(teplite.timeSyncer.diffsStat.paDiffDeviation);
 
   }
-
+  let $body = $('body');
   function toggleFullScreen() {
 
     if (!document.webkitFullscreenElement) {
       teplite.gritter.addGrit('Включаем полноэкранный режим');
       document.documentElement.webkitRequestFullscreen();
+      $body.addClass('body--full-screen');
     } else {
       teplite.gritter.addGrit('Выключаем полноэкранный режим');
       document.webkitExitFullscreen();
+      $body.removeClass('body--full-screen');
     }
   }
   $('#button-fullscreen').on('click', toggleFullScreen);
