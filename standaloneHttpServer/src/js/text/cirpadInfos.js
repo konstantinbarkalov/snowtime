@@ -16,12 +16,12 @@ const cirpadInfos = {
     messageHtml: 'Скрорость/частота эха и других эффектов. Не имеет действия, если «Snowpad» находится в центральном положении (поскольку никаких аудио-эффектов в этом положении не слышно). Частота эффектов кратна ритму музыки.',
   },
   devdos:{
-    headerHtml: 'devdos',
-    messageHtml: 'TODO: Fill me',
+    headerHtml: 'Colorama',
+    messageHtml: 'Управление оттенком цвета на цветовом круге. Чем дальше от центра, тем эффект более выражен.',
   },
   devtre:{
-    headerHtml: 'devtre',
-    messageHtml: 'TODO: Fill me',
+    headerHtml: 'Intencio',
+    messageHtml: 'Яркость свечения. В суперярком режиме становится стробоскопом!',
   },
   devqua:{
     headerHtml: 'devqua',
