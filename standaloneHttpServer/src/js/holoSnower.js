@@ -50,6 +50,19 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
   let videotextures = [];
 
   let gl = holoCanvasCtx; // just a shorten alias
+
+  // TODO: move somewhere
+  let defaultMetaPack = {
+    name: 'default videotextures pack',
+    metas: [
+      {
+        url: '/img/boketicle.jpg',
+        isMipmap: true,
+      },
+      { url: '/img/tst.jpg'},
+    ],
+  }
+
   function init() {
     that.readyPromise = rebuildData();
     teplite.onSet('videoQualityRatio', () => {
@@ -112,19 +125,9 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     gl.bufferData(gl.ARRAY_BUFFER, beatHashedRgbsIndexes, gl.STATIC_DRAW);
 
 
-    // TODO: move somewhere
-    let metaPack= {
-      name: 'default videotextures pack',
-      metas: [
-        {
-          url: '/img/boketicle.jpg',
-          isMipmap: true,
-        },
-        { url: '/img/tst.jpg'},
-      ],
-    }
+
     videotextures=[];
-    return useMetaPack(metaPack, videotextures);
+    return useMetaPack(defaultMetaPack, videotextures);
   }
 
   function useMetaPack(metaPack, videotextures) {
@@ -138,8 +141,7 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
         teplite.statusbar.setVideotexturesDownloadReadyRatio(loadedCount / metaPack.metas.length);
       });
     });
-    return Promise.all(promises).then(()=>{
-    });
+    return Promise.all(promises);
   }
 
 
@@ -256,6 +258,11 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     holoCanvasHeight = newHoloCanvasHeight;
   }
   init();
+
+  window.tweakSnowflakeImageUrl = function(url) {
+    defaultMetaPack.metas[0].url = url;
+    return rebuildData();
+  }
 }
 module.exports = holoSnower;
 
