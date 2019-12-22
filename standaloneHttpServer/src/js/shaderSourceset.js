@@ -35,6 +35,7 @@ varying float v_radialRatio;
 varying float v_horisontalRatio;
 varying vec3 v_seed;
 void main() {
+  float epsilon = 0.00001;
   vec4 glPhisicPosition = vec4(a_position + a_glVelocity * u_glPhisicBeatNumDiff, 1);
   gl_Position = u_matrix * glPhisicPosition;
   v_distance = gl_Position.w / 5.0;
@@ -60,24 +61,28 @@ void main() {
   vec2 texcoord = vec2(0.5 + gl_Position.x / gl_Position.w / 2.0, 0.5 + gl_Position.y / gl_Position.w / -2.0); // get a value from the middle of the texture
   v_beatHashedRgb =  v_beatHashedRgb + texture2D(u_textureTst, texcoord) * u_color0;
 
-  v_beatHashedRgb = v_beatHashedRgb * (1.0 + pow(a_seed[1], 1.0 / u_masterLumaFactor) * 10.0);
+  v_beatHashedRgb = v_beatHashedRgb * (1.0 + pow(a_seed[1], 1.0 / (u_masterLumaFactor + epsilon)) * 10.0);
 
   // streakRatio
-  float outerNum = u_beatNum * u_hatonomFreq;
-  float inerPerOuter = u_hatonomFreq;
-  float interNum = outerNum / inerPerOuter;
-  float interNumMod = mod(interNum, 1.0);
-  bool isStreaking = (floor(a_seed[0] * inerPerOuter) == floor(interNumMod * inerPerOuter) );
-  if (isStreaking) {
-    float streakSineRatio;
-    if (mod(outerNum, 1.0) < 0.5) {
-      streakSineRatio = (1.0 + cos(outerNum * 3.14159 * 2.0)) / 2.0;
+  if (u_hatonomFreq > 0.0) {
+    float outerNum = u_beatNum * u_hatonomFreq;
+    float inerPerOuter = u_hatonomFreq;
+    float interNum = outerNum / inerPerOuter;
+    float interNumMod = mod(interNum, 1.0);
+    bool isStreaking = (floor(a_seed[0] * inerPerOuter) == floor(interNumMod * inerPerOuter) );
+    if (isStreaking) {
+      float streakSineRatio;
+      if (mod(outerNum, 1.0) < 0.5) {
+        streakSineRatio = (1.0 + cos(outerNum * 3.14159 * 2.0)) / 2.0;
+      } else {
+        streakSineRatio = 0.0;
+      }
+      v_streakRatio = pow(streakSineRatio, 5.0 / u_hatonomFreq);
     } else {
-      streakSineRatio = 0.0;
+      v_streakRatio = 0.0 * a_glVelocity[0] * u_glPhisicBeatNumDiff;
     }
-    v_streakRatio = pow(streakSineRatio, 1.0 / u_hatonomFreq);
   } else {
-    v_streakRatio = 0.0 * a_glVelocity[0] * u_glPhisicBeatNumDiff;
+    v_streakRatio = 0.0;
   }
   // streakRatio
 
@@ -144,17 +149,21 @@ void main() {
   v_texcoord = a_texcoord;
 
   // streakRatio
-  float outerNum = u_beatNum * u_hatonomFreq;
-  float inerPerOuter = u_hatonomFreq;
-  float interNum = outerNum / inerPerOuter;
-  float interNumMod = mod(interNum, 1.0);
-  float streakSineRatio;
-  if (mod(outerNum, 1.0) < 0.5) {
-    streakSineRatio = (1.0 + cos(outerNum * 3.14159 * 2.0)) / 2.0;
+  if (u_hatonomFreq > 0.0) {
+    float outerNum = u_beatNum * u_hatonomFreq;
+    float inerPerOuter = u_hatonomFreq;
+    float interNum = outerNum / inerPerOuter;
+    float interNumMod = mod(interNum, 1.0);
+    float streakSineRatio;
+    if (mod(outerNum, 1.0) < 0.5) {
+      streakSineRatio = (1.0 + cos(outerNum * 3.14159 * 2.0)) / 2.0;
+    } else {
+      streakSineRatio = 0.0;
+    }
+    v_streakRatio = pow(streakSineRatio, 5.0 / u_hatonomFreq);
   } else {
-    streakSineRatio = 0.0;
+    v_streakRatio = 0.0;
   }
-  v_streakRatio = pow(streakSineRatio, 1.0 / u_hatonomFreq);
   // streakRatio
 
 }
@@ -181,6 +190,7 @@ varying float v_streakRatio;
 
 
 void main() {
+  float epsilon = 0.00001;
   //  city
   float timesin = sin(u_beatNum / 16.0 * 3.14);
   //float timesin = u_color0[0];
@@ -221,7 +231,7 @@ void main() {
   //flarePointColor = flarePointColor * 100.0;
   flarePointColor = flarePointColor * (0.1 + 1.0 * pow(u_masterLumaFactor, 2.0));
 
-  float gammaFactor = 0.67 / u_masterLumaFactor;
+  float gammaFactor = 0.67 / (u_masterLumaFactor + epsilon);
   flarePointColor = pow(flarePointColor, vec4(gammaFactor, gammaFactor, gammaFactor, 1.0));
   //flarePointColor = flarePointColor * gammaFactor;
   gl_FragColor += flarePointColor;
