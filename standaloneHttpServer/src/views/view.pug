@@ -1,252 +1,253 @@
 extends layout
 
 block content
-  .holo
-    .holo__canvas-wrapper
-      canvas.holo__canvas
-  .content.content--pre
-    .topcard
-    .topcard
-    .topcard
-    .topcard
+  include includes/preloadAwaiter.pug
+  .app-layer
+    .holo
+      .holo__canvas-wrapper
+        canvas.holo__canvas
+    .content.content--pre
+      .topcard
+      .topcard
 
 
-  .snow-stencil
-  .content.content--top
-    .grid.col.elem.gh
-      //grid root
-      .grid.col.al-it-ce
-        .grid.col.full.maw-600
-          .grid.col.elem
-            .topcard
-            h1 snowtime.fun
-            //h1 snowpad.online
-          .grid.col.elem
-            include includes/faq.pug
-          .grid.col.elem
-            //.debug-bratio-fn-renderer
-            button#button-fullscreen На полный экран
-          .grid.col.elem
-            h1#audio-sync Задержка звука
-            p.lead На устройстве
-          .grid.col.elem
-            p Необходимо вручную синхронизировать звук с изображением: зажать бегунок до появления звука маракасов («тс-тс-тс») и соотнести его со вспышками. Это особенно важно для сетевого режима, чтобы все устройства звучали синхронно.
-          .grid.col.elem
-            .cirpad.cirpad--hor#cirpad--system-audio-lag
-              .cirpad__pad-outer
-                .cirpad__pad-inner
-                  .cirpad__handle
-                    .cirpad__handle-peep
-            .cirpad-value#cirpad-value--system-audio-lag
-              .cirpad-value__value
-              .cirpad-value__subvalue
-          .grid.col.elem#video-quality
-            h1 Количество частиц
-            p.lead Графоний
-          .grid.col.elem
-            .cirpad.cirpad--hor#cirpad--video-quality
-              .cirpad__pad-outer
-                .cirpad__pad-inner
-                  .cirpad__handle
-                    .cirpad__handle-peep
-            .cirpad-value#cirpad-value--video-quality
-              .cirpad-value__value
-              .cirpad-value__subvalue
-          .grid.col.elem
-            h1 Громкость
-          .grid.col.elem
-            p Совет: не нужно пытаться сделать громко. Лучше всего получится, если музыка будет играть едва слышно. Можно даже выключить звук совсем.
-          .grid.col.elem
-            .cirpad.cirpad--hor#cirpad--volume-theme
-              .cirpad__pad-outer
-                .cirpad__pad-inner
-                  .cirpad__handle
-                    .cirpad__handle-peep
-  .content.content--main
-    .grid.col.elem.gh
-      //grid root
-      .grid.col.al-it-ce
-        .grid.col.full.maw-600
-          .grid.col.elem
-            .beat-time-display
-          .grid.col.elem
-            .remoted-cirpad#remoted-cirpad--power
-              .cirpad.cirpad--hor
+    .snow-stencil
+    .content.content--top
+      .grid.col.elem.gh
+        //grid root
+        .grid.col.al-it-ce
+          .grid.col.full.maw-600
+            //.grid.col.elem
+              .topcard
+              h1 snowtime.fun
+
+            .grid.col.elem
+              .topcard
+              include includes/faq.pug
+            .grid.col.elem
+              //.debug-bratio-fn-renderer
+              button#button-fullscreen На полный экран
+            .grid.col.elem
+              h1#audio-sync Задержка звука
+              p.lead На устройстве
+            .grid.col.elem
+              p Необходимо вручную синхронизировать звук с изображением: зажать бегунок до появления звука маракасов («тс-тс-тс») и соотнести его со вспышками. Это особенно важно для сетевого режима, чтобы все устройства звучали синхронно.
+            .grid.col.elem
+              .cirpad.cirpad--hor#cirpad--system-audio-lag
                 .cirpad__pad-outer
                   .cirpad__pad-inner
                     .cirpad__handle
                       .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                      | Polyforte
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
-          .grid.col.elem
-            .remoted-cirpad#remoted-cirpad--haze
-              .cirpad.cirpad--rect
+              .cirpad-value#cirpad-value--system-audio-lag
+                .cirpad-value__value
+                .cirpad-value__subvalue
+            .grid.col.elem#video-quality
+              h1 Количество частиц
+              p.lead Графоний
+            .grid.col.elem
+              .cirpad.cirpad--hor#cirpad--video-quality
                 .cirpad__pad-outer
                   .cirpad__pad-inner
                     .cirpad__handle
                       .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                     | Snowpad
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
-          .grid.col.elem
-            .remoted-cirpad#remoted-cirpad--devuno
-              .cirpad.cirpad--hor
+              .cirpad-value#cirpad-value--video-quality
+                .cirpad-value__value
+                .cirpad-value__subvalue
+            .grid.col.elem
+              h1 Громкость
+            .grid.col.elem
+              p Совет: не нужно пытаться сделать громко. Лучше всего получится, если музыка будет играть едва слышно. Можно даже выключить звук совсем.
+            .grid.col.elem
+              .cirpad.cirpad--hor#cirpad--volume-theme
                 .cirpad__pad-outer
                   .cirpad__pad-inner
                     .cirpad__handle
                       .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                      | Delair
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
-          .grid.col.elem
-            .remoted-cirpad#remoted-cirpad--devtre
-              .cirpad.cirpad--circle
-                .cirpad__pad-outer
-                  .cirpad__pad-inner
-                    .cirpad__handle
-                      .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                      | Colorama
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
+    .content.content--main
+      .grid.col.elem.gh
+        //grid root
+        .grid.col.al-it-ce
+          .grid.col.full.maw-600
+            .grid.col.elem
+              .beat-time-display
+            .grid.col.elem
+              .remoted-cirpad#remoted-cirpad--power
+                .cirpad.cirpad--hor
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | Polyforte
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
+            .grid.col.elem
+              .remoted-cirpad#remoted-cirpad--haze
+                .cirpad.cirpad--rect
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | Snowpad
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
+            .grid.col.elem
+              .remoted-cirpad#remoted-cirpad--devuno
+                .cirpad.cirpad--hor
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | Delair
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
+            .grid.col.elem
+              .remoted-cirpad#remoted-cirpad--devtre
+                .cirpad.cirpad--circle
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | Colorama
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
 
-          .grid.col.elem
-            .remoted-cirpad#remoted-cirpad--devqua
-              .cirpad.cirpad--hor
-                .cirpad__pad-outer
-                  .cirpad__pad-inner
-                    .cirpad__handle
-                      .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                      | Intencio
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
+            .grid.col.elem
+              .remoted-cirpad#remoted-cirpad--devqua
+                .cirpad.cirpad--hor
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | Intencio
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
 
-          //.grid.col.elem
-            .remoted-cirpad#remoted-cirpad--devdos
-              .cirpad.cirpad--hor
-                .cirpad__pad-outer
-                  .cirpad__pad-inner
-                    .cirpad__handle
-                      .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    | Metrohat
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
+            //.grid.col.elem
+              .remoted-cirpad#remoted-cirpad--devdos
+                .cirpad.cirpad--hor
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      | Metrohat
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
 
-          //.grid.col.elem
-            .remoted-cirpad#remoted-cirpad--devqui
-              .cirpad.cirpad--circle
-                .cirpad__pad-outer
-                  .cirpad__pad-inner
-                    .cirpad__handle
-                      .cirpad__handle-peep
-                .cirpad__sub
-                  .cirpad__sub-element
-                    a.cirpad__info-link(href='javascript:void(0);')
-                      | devqui
-                  .cirpad__sub-element
-                    //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
-                      | Автопилот
-                    a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
-                      | С сервера
-                    a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
-                      | На сервер
+            //.grid.col.elem
+              .remoted-cirpad#remoted-cirpad--devqui
+                .cirpad.cirpad--circle
+                  .cirpad__pad-outer
+                    .cirpad__pad-inner
+                      .cirpad__handle
+                        .cirpad__handle-peep
+                  .cirpad__sub
+                    .cirpad__sub-element
+                      a.cirpad__info-link(href='javascript:void(0);')
+                        | devqui
+                    .cirpad__sub-element
+                      //a.remoted-cirpad__button.remoted-cirpad__button--autopilot.remoted-cirpad__button--active(href='javascript:void(0);')
+                        | Автопилот
+                      a.remoted-cirpad__button.remoted-cirpad__button--receive(href='javascript:void(0);')
+                        | С сервера
+                      a.remoted-cirpad__button.remoted-cirpad__button--send(href='javascript:void(0);')
+                        | На сервер
 
 
-          //.grid.col.elem
-          //  .topcard
-          //.grid.col.elem
-          //  h1 Диагностика задежек
-          //  p.lead для разработки
-          //.grid.col.elem
-          //  h3 Клиент-серверные задержки
-          //  .debug-display.debug-display--lag-display
-          //.grid.col.elem
-          //  h3 Задержки внутренних таймеров
-          //  .debug-display.debug-display--diff-display
-          .grid.col.elem
-            .bottomcard
-  .cut-here пустой экран
-  .spaceview
-  .cut-here
-  .content.content--post
-    .grid.col.elem.gh
-      //grid root
-      .grid.col.al-it-ce
-        .grid.col.full.maw-600
-          .grid.col.elem
-            .topcard
-            h1#connector Подключение к серверу
-            p.lead сетевой режим
-          .grid.col.elem
-            p Объединение устройств в ансамбль, позоляет синхронизровать их и управлять ими с одного устройства. Введите одинаковое название комнаты и пароль на всех устройствах. И всё готово.
-            .connector
-              .form-line
-                label сервер
-                select.connector__server
-                  //option(value='http://localhost:2020') Локалхост 2020
-                  //option(value='http://localhost:2020') Локалхост 2020
-                  option(value='http://snowtime.fun:2020', selected=true) Сервер во Франкфурте
-                  //option(value='http://mqutie.termo-master.ru:2020', selected=true) Эпсилон
-                  //option(value='http://localhost:2020') Дельта
-                input.connector__server
-              .form-line
-                label навание комнаты
-                input.connector__roomname
-              .form-line
-                label пароль
-                input.connector__password
-              .form-line.form-line--no-label
-                button.connector__connect подключиться
-            .topcard
-  include includes/statusbar.pug
-  include includes/gritter.pug
+            //.grid.col.elem
+            //  .topcard
+            //.grid.col.elem
+            //  h1 Диагностика задежек
+            //  p.lead для разработки
+            //.grid.col.elem
+            //  h3 Клиент-серверные задержки
+            //  .debug-display.debug-display--lag-display
+            //.grid.col.elem
+            //  h3 Задержки внутренних таймеров
+            //  .debug-display.debug-display--diff-display
+            .grid.col.elem
+              .bottomcard
+    .cut-here пустой экран
+    .spaceview
+    .cut-here
+    .content.content--post
+      .grid.col.elem.gh
+        //grid root
+        .grid.col.al-it-ce
+          .grid.col.full.maw-600
+            .grid.col.elem
+              .topcard
+              h1#connector Подключение к серверу
+              p.lead сетевой режим
+            .grid.col.elem
+              p Объединение устройств в ансамбль, позоляет синхронизровать их и управлять ими с одного устройства. Введите одинаковое название комнаты и пароль на всех устройствах. И всё готово.
+              .connector
+                .form-line
+                  label сервер
+                  select.connector__server
+                    //option(value='http://localhost:2020') Локалхост 2020
+                    //option(value='http://localhost:2020') Локалхост 2020
+                    option(value='http://snowtime.fun:2020', selected=true) Сервер во Франкфурте
+                    //option(value='http://mqutie.termo-master.ru:2020', selected=true) Эпсилон
+                    //option(value='http://localhost:2020') Дельта
+                  input.connector__server
+                .form-line
+                  label навание комнаты
+                  input.connector__roomname
+                .form-line
+                  label пароль
+                  input.connector__password
+                .form-line.form-line--no-label
+                  button.connector__connect подключиться
+              .topcard
+    include includes/statusbar.pug
+    include includes/gritter.pug
   include includes/audioAwaiter.pug
   include includes/errorer.pug
   include includes/informer.pug

@@ -1,8 +1,12 @@
 .audio-awaiter
   .grid.col.maw-600.no-shrink
     .grid.elem.col
-      h1.audio-awaiter__header Web-audio в браузере
+      h1.audio-awaiter__header Про звук
     .grid.elem.col
-      p.audio-awaiter__message Некоторые браузеры (новый Chrome, Safari) не разрешают проигрывать звук с помощью web-audio, пока пользователь сам руками не нажмёт на кнопку. В общем, вот эта кнопка:
+      p.audio-awaiter__message
+        | Звук в приложении начнёт воспроизводиться только после того как в фоновом режиме загрузятся (10МБ) и подготовятся аудиофайлы — вверху экрана заполнится зеленая полоска.
+        br
+        br
+        | Крутить ручки можно прям сразу.<br/><br/>
     .grid.elem.col
-      button.audio-awaiter__close-button Включить web-audio
+      button.audio-awaiter__close-button Да понятно, давай уже!

@@ -14,13 +14,16 @@ const Holo = require('./holo.js');
 const SioClient = require('./sioClient.js');
 const Informer = require('./informer.js');
 const AudioAwaiter = require('./audioAwaiter.js');
+const PreloadAwaiter = require('./preloadAwaiter.js');
 function Teplite() {
   let that = this;
   function preinit() {
     window.teplite = that;
     ee(that);
+    that.preloadAwaiter = new PreloadAwaiter($('.preload-awaiter'), $('.app-layer'));
     that.audioAwaiter = new AudioAwaiter($('.audio-awaiter'));
     that.initPromise = that.audioAwaiter.readyPromise.then(()=>{
+      that.preloadAwaiter.becomeReady(); // show app-layer here
       init();
     });
   }

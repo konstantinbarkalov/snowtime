@@ -176,9 +176,10 @@ teplite.initPromise.then(()=>{
     // +1 because of one-based holo
   }
   teplite.squareTimer.holoLaglessSquareCallback = function(beatNum) {
-    $powerMeterScale.style = {
-      width: remotedCirpadPower.bratios
-    }
+    // TODO
+    //$powerMeterScale.style = {
+    //  width: remotedCirpadPower.bratios
+    //}
   }
   teplite.squareTimer.audioLaglessBeatCallback = function(beatNum) {
     //let atime = teplite.audioCtx.currentTime - teplite.squareTimer.partyStartedAtime;
@@ -551,6 +552,9 @@ teplite.initPromise.then(()=>{
 
     return teplite.readyPromise.then(teplite.timeSyncer.padSyncStartRoutine).then(()=>{
       teplite.squareTimer.start();
+      // reset polyforte to default, because first-time user may accidentally fade it down, while no audio is played (during download)
+      remotedCirpadPower.setRemoteBratios([0, 0]);
+
       let resyncIntervalId = setInterval(()=>{ // TODO: rework as always runned, with result smoothing
         teplite.gritter.addGrit('Ресинхронизация аудиотаймера...');
         return teplite.timeSyncer.padSyncStartRoutine().then(()=>{

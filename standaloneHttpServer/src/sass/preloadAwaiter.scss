@@ -1,25 +1,23 @@
-.audio-awaiter {
-  display: none;
-  &.audio-awaiter--active {
-    display: flex;
+.preload-awaiter {
+  display: flex;
+  &.preload-awaiter--app-ready {
+    display: none;
   }
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: $z-index-audio-awaiter;
-  //background: #210e33;
-  background: linear-gradient(0deg, #0e3321, #006333);
-
+  z-index: $z-index-preload-awaiter;
+  background: linear-gradient(0deg, #0e3321, #0b502f);
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: auto;
-  h1.audio-awaiter__header {
+  h1.preload-awaiter__header {
     color: rgba(255, 255, 255, 0.5);
   }
-  p.audio-awaiter__message {
+  p.preload-awaiter__message {
     color: rgba(255, 255, 255, 0.8);
     font-size: 19px;
     line-height: 28px;

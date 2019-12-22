@@ -4,6 +4,7 @@
 @import 'form';
 @import 'grid';
 @import 'errorer';
+@import 'preloadAwaiter';
 @import 'informer';
 @import 'audioAwaiter';
 @import 'statusbar';
@@ -65,14 +66,19 @@ body.body--full-screen::-webkit-scrollbar {
     height: 100%;
   }
 }
-
+.app-layer {
+  display: none;
+  &.app-layer--app-ready {
+    display: block;
+  }
+}
 
 ////  content
 .content {
   position: relative;
 }
 .spaceview {
-  height: 120%;
+  height: 120vh;
   width: 100%;
   position: relative;
 }
@@ -103,7 +109,7 @@ body.body--full-screen::-webkit-scrollbar {
     background: #0c0014;
   }
   .topcard {
-    height: 32px;
+    height: 64px;
     //TODO & rename 'card'
   }
   .spacercard {
