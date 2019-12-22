@@ -63,7 +63,10 @@ function PassFilter(destination) {
     let p = Math.pow(q, ratio);
     return (p - 1) / (q - 1);
   }
-
+  function clampHz(value) {
+    const limit = 22050;
+    return Math.max(0, Math.min(limit, value));
+  }
   that.input = null;
   that.output = null;
   const maxFreq = 1000 * 24;
@@ -94,15 +97,15 @@ function PassFilter(destination) {
     q += qRezImpactRatio * extraQ;
     // /rez part
     if (freqBratio > 0) {
-      highpassFilter.frequency.value = maxFreq * ratioToExpRatio(freqBratio, 100); // TODO refactor as a Math.pow
-      lowpassFilter.frequency.value = maxFreq;
+      highpassFilter.frequency.value = clampHz(maxFreq * ratioToExpRatio(freqBratio, 100)); // TODO refactor as a Math.pow
+      lowpassFilter.frequency.value = clampHz(maxFreq);
       highpassFilter.Q.value = q;
       lowpassFilter.Q.value = -5;
       inputHighpassFilter.gain.value = qFreqImpactRatio; // * gainRezImpactRatio;
       inputLowpassFilter.gain.value = 0;
     } else {
-      lowpassFilter.frequency.value = maxFreq * ratioToExpRatio(1 + freqBratio, 100); // TODO refactor as a Math.pow
-      highpassFilter.frequency.value = 0;
+      lowpassFilter.frequency.value = clampHz(maxFreq * ratioToExpRatio(1 + freqBratio, 100)); // TODO refactor as a Math.pow
+      highpassFilter.frequency.value = clampHz(0);
       lowpassFilter.Q.value = q;
       highpassFilter.Q.value = -5;
       inputLowpassFilter.gain.value = qFreqImpactRatio; // * gainRezImpactRatio;
