@@ -40,10 +40,17 @@ function Errorer($errorer) {
   }
   function showErrorer() {
     domReadyPromise.then(()=>{
-      document.webkitExitFullscreen();
+      let documentExitFullscreen =
+        document.webkitExitFullscreen ||
+        document.mozExitFullscreen ||
+        document.msExitFullscreen ||
+        document.oExitFullscreen ||
+        document.exitFullscreen;
+      documentExitFullscreen.call(document);
       $errorer.addClass('errorer--active');
     });
   }
+  document.showErrorer = showErrorer;
   function addError(message, file, line, col, err, errorsCount) {
     domReadyPromise.then(()=>{
       let $error = $('<div></div>').addClass('errorer__error');

@@ -440,14 +440,31 @@ teplite.initPromise.then(()=>{
   }
   let $body = $('body');
   function toggleFullScreen() {
-
-    if (!document.webkitFullscreenElement) {
+    let documentFullscreenElement =
+      document.webkitFullscreenElement ||
+      document.mozFullscreenElement ||
+      document.msFullscreenElement ||
+      document.oFullscreenElement ||
+      document.fullscreenElement;
+    if (!documentFullscreenElement) {
       teplite.gritter.addGrit('Включаем полноэкранный режим');
-      document.documentElement.webkitRequestFullscreen();
+      let documentElementRequestFullscreen =
+        document.documentElement.webkitRequestFullscreen ||
+        document.documentElement.mozRequestFullscreen ||
+        document.documentElement.msRequestFullscreen ||
+        document.documentElement.oRequestFullscreen ||
+        document.documentElement.requestFullscreen;
+      documentElementRequestFullscreen.call(document.documentElement);
       $body.addClass('body--full-screen');
     } else {
       teplite.gritter.addGrit('Выключаем полноэкранный режим');
-      document.webkitExitFullscreen();
+      let documentExitFullscreen =
+        document.webkitExitFullscreen ||
+        document.mozExitFullscreen ||
+        document.msExitFullscreen ||
+        document.oExitFullscreen ||
+        document.exitFullscreen;
+      documentExitFullscreen.call(document);
       $body.removeClass('body--full-screen');
     }
   }
