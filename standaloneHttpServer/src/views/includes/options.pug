@@ -1,0 +1,55 @@
+.options
+  .grid.col.cont
+
+    .options__expander
+      .grid.col.elem
+        h1#audio-sync Задержка звука
+        p.lead На устройстве
+      .grid.col.elem
+        p Необходимо вручную синхронизировать звук с изображением: зажать бегунок до появления звука маракасов («тс-тс-тс») и соотнести его со вспышками. Это особенно важно для сетевого режима, чтобы все устройства звучали синхронно.
+      .grid.col.elem
+        .cirpad.cirpad--hor#cirpad--system-audio-lag
+          .cirpad__pad-outer
+            .cirpad__pad-inner
+              .cirpad__handle
+                .cirpad__handle-peep
+        .cirpad-value#cirpad-value--system-audio-lag
+          .cirpad-value__value
+          .cirpad-value__subvalue
+      .grid.col.elem#video-quality
+        h1 Количество частиц
+        p.lead Графоний
+      .grid.col.elem
+        .cirpad.cirpad--hor#cirpad--video-quality
+          .cirpad__pad-outer
+            .cirpad__pad-inner
+              .cirpad__handle
+                .cirpad__handle-peep
+        .cirpad-value#cirpad-value--video-quality
+          .cirpad-value__value
+          .cirpad-value__subvalue
+      .grid.col.elem
+        h1 Громкость
+      .grid.col.elem
+        p Совет: не нужно пытаться сделать громко. Лучше всего получится, если музыка будет играть едва слышно. Можно даже выключить звук совсем.
+      .grid.col.elem
+        .cirpad.cirpad--hor#cirpad--volume-theme
+          .cirpad__pad-outer
+            .cirpad__pad-inner
+              .cirpad__handle
+                .cirpad__handle-peep
+    .grid.col.elem
+      h1 Управление
+    .grid.col
+      .grid.row
+        .grid.col.elem.half
+          button.simplex-switch.simplex-switch--simple  Просто
+        .grid.col.elem.half
+          button.simplex-switch.simplex-switch--complex Непросто
+    .grid.col.elem
+      .spacer
+      a.options__expander-toggle(href='javascript:void(0);')
+        .options__expander-toggle-text.options__expander-toggle-text--show
+          | Показать ещё настройки...
+        span.options__expander-toggle-text.options__expander-toggle-text--hide
+          | Скрыть настройки...

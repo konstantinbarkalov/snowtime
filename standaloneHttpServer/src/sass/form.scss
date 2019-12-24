@@ -15,10 +15,44 @@ input, textarea, select, button {
 }
 button {
   cursor: pointer;
+  //background: rgba(255, 255, 255, 0.8);
+  //color: #000;
+  //border-color: rgba(24, 24, 24, 0.5);
   background: rgba(255, 255, 255, 0.8);
   color: #000;
   border-color: rgba(24, 24, 24, 0.5);
+
+  &.greenish {
+    transition: 0.3s;
+    background: rgba(213, 249, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+    &:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 1);
+    }
+    &:hover {
+      outline: none;
+      background: rgba(213, 249, 255, 0.2);
+    }
+  }
+  &.blueish {
+    transition: 0.3s;
+    background: rgba(213, 249, 255, 0.1);
+    color: #d6ddff;
+    border-color: rgba(178, 168, 255, 0.6);
+    &:focus {
+      outline: none;
+      // - How dare you?!
+      // - Well, is'a touch/mouse 'game' anyway, so yes, I DARE.
+    }
+    &:hover {
+      outline: none;
+      background: rgba(213, 249, 255, 0.2);
+    }
+  }
 }
+
 
 select {
   padding: 8px 4px;

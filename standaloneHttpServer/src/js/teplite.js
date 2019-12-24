@@ -20,7 +20,7 @@ function Teplite() {
   function preinit() {
     window.teplite = that;
     ee(that);
-    that.preloadAwaiter = new PreloadAwaiter($('.preload-awaiter'), $('.app-layer'));
+    that.preloadAwaiter = new PreloadAwaiter($('.preload-awaiter'), $('.app__layer'));
     that.audioAwaiter = new AudioAwaiter($('.audio-awaiter'));
     that.initPromise = that.audioAwaiter.readyPromise.then(()=>{
       that.preloadAwaiter.becomeReady(); // show app-layer here

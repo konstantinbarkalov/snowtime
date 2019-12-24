@@ -76,7 +76,7 @@ function Cirpad($container, mode, stepsCount) {
       case 'vert':
         innerLeft = 0.5 * innerWidth + handleWidth / 2;
         break;
-    } //u may also develop reverce-square-circle math here (in circle case)
+    } //u may also develop reverse-square-circle math here (in circle case)
 
     $handle.css({
       transform: `translate3d(${innerLeft}px, ${innerTop}px, 0)`,
@@ -132,10 +132,10 @@ function Cirpad($container, mode, stepsCount) {
           break;
         case 'hor':
           x = Math.max(-1, Math.min(1, x));
-          y = 0.5;
+          y = 0;
           break;
         case 'vert':
-          x = 0.5;
+          x = 0;
           y = Math.max(-1, Math.min(1, y));
           break;
       }
@@ -204,6 +204,9 @@ function Cirpad($container, mode, stepsCount) {
   that.setBratios = function(newBratios) {
     bratios = newBratios;
     updateHandlePosition();
+  }
+  that.updateSize = function() {
+    resize();
   }
   init();
 }

@@ -9,7 +9,7 @@ function PreloadAwaiter($preloadAwaiter, $appLayer) {
   }
   that.becomeReady = function() {
     $preloadAwaiter.addClass('preload-awaiter--app-ready');
-    $appLayer.addClass('app-layer--app-ready');
+    $appLayer.addClass('app__layer--app-ready');
   }
   init();
 }

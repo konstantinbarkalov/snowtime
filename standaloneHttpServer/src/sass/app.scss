@@ -12,6 +12,8 @@
 @import 'connector';
 @import 'cirpad';
 @import 'faq';
+@import 'options';
+@import 'simplexSwitch';
 body.body--full-screen::-webkit-scrollbar {
   display: none;
 }
@@ -66,9 +68,9 @@ body.body--full-screen::-webkit-scrollbar {
     height: 100%;
   }
 }
-.app-layer {
+.app__layer {
   display: none;
-  &.app-layer--app-ready {
+  &.app__layer--app-ready {
     display: block;
   }
 }
@@ -84,7 +86,7 @@ body.body--full-screen::-webkit-scrollbar {
 }
 .content { // not a bem
   &.content--top {
-    padding-bottom: 128px;
+    padding-bottom: 96px;
     background: linear-gradient(#131c25, rgba(16, 0, 16, 0.9) 30%, rgba(0, 0, 48, 0.8) 50%, rgba(255, 96, 0, 0.2) 75%, rgba(255, 192, 0, 0.1) 90%, rgba(255, 255, 0, 0));
     background-size: 100% 1600px;
     background-repeat: repeat-x;
@@ -108,15 +110,16 @@ body.body--full-screen::-webkit-scrollbar {
   &.content--pre {
     background: #0c0014;
   }
-  .topcard {
+  .spacer {
+    height: 32px;
+  }
+  .spacer-2 {
     height: 64px;
-    //TODO & rename 'card'
   }
-  .spacercard {
-    height: 200px;
-    //TODO & rename 'card'
+  .spacer-4 {
+    height: 128px;
   }
-  .bottomcard {
+  .spacer-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,7 +128,6 @@ body.body--full-screen::-webkit-scrollbar {
     font-size: 32px;
     height: 128px;
     //now same as .beat-time-display
-    //TODO & rename 'card'
   }
 
   .cirpad-value {
@@ -151,15 +153,21 @@ body.body--full-screen::-webkit-scrollbar {
     font-size: 80px;
     font-weight: 100;
     height: 128px;
+    min-height: 25vh;
     will-change: contents;
   }
-
+  .beat-time-display-spacer {
+    min-height: 25vh;
+  }
   .debug-display {
     font-size: 12px;
     font-family: monospace;
   }
 
-
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
 }
 //// /content
 

@@ -135,6 +135,9 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
       autopilot.tick();
     }
   }
+  that.updateSize = function() {
+    cirpad.updateSize();
+  }
   init();
 
 }

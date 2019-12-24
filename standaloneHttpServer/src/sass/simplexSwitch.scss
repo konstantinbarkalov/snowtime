@@ -1,0 +1,62 @@
+button.simplex-switch {
+  //transition: color 1s, backgrond-color 1s, border-color 1s;
+  transition: 0.3s;
+  &:focus {
+    outline: none;
+    // - How dare you?!
+    // - Well, is'a touch/mouse 'game' anyway, so yes, I DARE.
+  }
+}
+button.simplex-switch.simplex-switch--simple {
+  background: rgba(31, 93, 0, 0.28);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+button.simplex-switch.simplex-switch--complex {
+  background: rgba(0, 0, 0, 0);
+  color: #ababab;
+  border-color: rgba(255, 255, 255, 0.2);
+  &:hover {
+    background: rgba(204, 204, 204, 0.2);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.0);
+  }
+}
+
+.app.app--complex {
+
+  button.simplex-switch.simplex-switch--complex {
+    background: rgba(64, 0, 80, 0.5);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+
+  button.simplex-switch.simplex-switch--simple {
+    background: rgba(0, 0, 0, 0);
+    color: #ababab;
+    border-color: rgba(255, 255, 255, 0.2);
+    &:hover {
+      background: rgba(204, 204, 204, 0.2);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.0);
+    }
+  }
+
+}
+.app.app--simple {
+  .--complex-only {
+    display: none;
+  }
+  .--simple-to-end {
+    order: 999;
+  }
+}
+.app.app.app--complex {
+  .--simple-only {
+    display: none;
+  }
+  .--complex-to-end {
+    order: 999;
+  }
+}

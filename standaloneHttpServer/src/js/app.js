@@ -48,6 +48,8 @@ require('./errorer.js'); // global errorer singleton imported
 require('./teplite.js'); // global teplite singleton imported
 teplite.initPromise.then(()=>{
   teplite.gritter.addGrit('Начинаем');
+  let $app = $('.app');
+
   // TODO: goto teplite, same as gritter
   const Connector = require('./connector.js');
   let connector = new Connector($('.connector'));
@@ -55,17 +57,16 @@ teplite.initPromise.then(()=>{
   const Faq = require('./faq.js');
   let faq = new Faq($('.faq'));
 
+  const Options = require('./options.js');
+  let options = new Options($('.options'));
+
   const HazeAutopilot = require('./hazeAutopilot.js');
   const DevdosAutopilot = require('./devdosAutopilot.js');
 
-  const Cirpad = require('./cirpad.js');
+
   const RemotedCirpad = require('./remotedCirpad.js');
 
-  let cirpadSystemAudioLag = new Cirpad($('#cirpad--system-audio-lag'), 'hor');
-  let cirpadVideoQuality = new Cirpad($('#cirpad--video-quality'), 'hor');
 
-  let cirpadVolumeTheme = new Cirpad($('#cirpad--volume-theme'), 'hor');
-  let cirpadVolumeMetro = new Cirpad($('#cirpad--volume-metro'), 'hor');
 
   const cirpadInfos = require('./text/cirpadInfos.js');
 
@@ -337,131 +338,40 @@ teplite.initPromise.then(()=>{
 
 
 
-  ////  cirpadSystemAudioLag
-  let $cirpadValueSystemAudioLag = $('#cirpad-value--system-audio-lag .cirpad-value__value');
-  let $cirpadSubvalueSystemAudioLag = $('#cirpad-value--system-audio-lag .cirpad-value__subvalue');
-  let $contentTop = $('.content.content--top'); // to see canvas when tweaking audio delay
-  let isSyncingMetro = false;
-  cirpadSystemAudioLag.onInput = function(audioLagBratios){
-    if (audioLagBratios[2]) {
-      //enable metronome on all devices during SystemAudioLag tuning
-      teplite.setEmit('isSyncingMetro', true, cirpadSystemAudioLag);
-      if (!isSyncingMetro) {
-        isSyncingMetro = true;
-        $contentTop.addClass('content--see-through');
-      }
-    } else {
-      teplite.setEmit('isSyncingMetro', false, cirpadSystemAudioLag);
-      if (isSyncingMetro) {
-        isSyncingMetro = false;
-        $contentTop.removeClass('content--see-through');
-      }
-    }
-    let ptime = (audioLagBratios[0] + 1) * 250; // 0 to 500
-    teplite.squareLooper.setAudioLag(ptime);
-    let textSubvalue;
-    if (ptime < 5) {
-      textSubvalue = 'студийная аппаратура или гаджет от Apple (у них всё классно с задержкой)'
-    } else if (ptime < 15) {
-      textSubvalue = 'правильная звуковая карта на ПК'
-    } else if (ptime < 80) {
-      textSubvalue = 'звуковая карта на ПК'
-    } else if (ptime < 120) {
-      textSubvalue = 'правильное мобильное устройство'
-    } else if (ptime < 400) {
-      textSubvalue = 'мобильное устройство'
-    } else {
-      textSubvalue = 'скорее всего это слишком большая задержка (если используется сетевой режим, возможно, стоит попробовать уменьшить задержку на других клиентах)'
-    }
-    let textValue = Math.round(ptime) + ' мсек';
-    $cirpadValueSystemAudioLag.text(textValue);
-    $cirpadSubvalueSystemAudioLag.text(textSubvalue);
-    localStorage.setItem('cirpadSystemAudioLagBratio', audioLagBratios[0]);
-  }
-  let cirpadSystemAudioLagBratios = [-0.9,0];
-  let loadeCirpadSystemAudioLagBratioJson = localStorage.getItem('cirpadSystemAudioLagBratio');
-  if (loadeCirpadSystemAudioLagBratioJson) {
-    cirpadSystemAudioLagBratios = [parseFloat(loadeCirpadSystemAudioLagBratioJson), 0];
-  }
-  cirpadSystemAudioLag.setBratios(cirpadSystemAudioLagBratios);
-  cirpadSystemAudioLag.onInput(cirpadSystemAudioLagBratios);
-  //// cirpadSystemAudioLag
-
-
-
-  ////  cirpadVideoQuality
-  let $cirpadValueVideoQuality = $('#cirpad-value--video-quality .cirpad-value__value');
-  let $cirpadSubvalueVideoQuality = $('#cirpad-value--video-quality .cirpad-value__subvalue');
-  cirpadVideoQuality.onInput = function(videoQualityBratios){
-    let videoQualityRatio = (videoQualityBratios[0] + 1 ) / 2;
-    let isPressed = videoQualityBratios[2];
-    if (!isPressed) { // only after user end interracts with ui, to not to spam video system reinitialisation
-      teplite.setEmit('videoQualityRatio', videoQualityRatio, cirpadVideoQuality);
-    }
-    let textSubvalue;
-    if (videoQualityRatio < 0.2) {
-      textSubvalue = 'графика на уровне слабого смартфона'
-    } else if (videoQualityRatio < 0.4) {
-      textSubvalue = 'графика на уровне сильного смартфона'
-    } else if (videoQualityRatio < 0.6) {
-      textSubvalue = 'графика на уровне среднего ПК'
-    } else if (videoQualityRatio < 0.8) {
-      textSubvalue = 'графика на уровне мощного ПК с дискретной видеокартой'
-    } else {
-      textSubvalue = 'а твоя видеокарта хороша! :)'
-    }
-    let textValue = Math.round(videoQualityRatio * 100) + '%';
-    $cirpadValueVideoQuality.text(textValue);
-    $cirpadSubvalueVideoQuality.text(textSubvalue);
-    localStorage.setItem('videoQualityRatio', videoQualityRatio);
-  }
-  let cirpadVideoQualityBratios = [teplite.videoQualityRatio * 2 - 1, 0, 0];
-  let loadeCirpadVideoQualityRatioJson = localStorage.getItem('videoQualityRatio');
-  if (loadeCirpadVideoQualityRatioJson) {
-    cirpadVideoQualityBratios = [parseFloat(loadeCirpadVideoQualityRatioJson) * 2 - 1, 0];
-  }
-  cirpadVideoQuality.setBratios(cirpadVideoQualityBratios);
-  cirpadVideoQuality.onInput(cirpadVideoQualityBratios);
-  //// cirpadVideoQuality
-
-
-
-  ////  cirpadVolumeTheme
-  cirpadVolumeTheme.onInput = function(volumeThemeBratios){
-    let volumeThemeRatio = (volumeThemeBratios[0] + 1 ) / 2;
-    teplite.setEmit('volumeThemeRatio', volumeThemeRatio, cirpadVolumeTheme);
-    localStorage.setItem('volumeThemeRatio', volumeThemeRatio);
-  }
-  let cirpadVolumeThemeBratios = [teplite.volumeThemeRatio * 2 - 1, 0, 0];
-  let loadeCirpadVolumeThemeRatioJson = localStorage.getItem('volumeThemeRatio');
-  if (loadeCirpadVolumeThemeRatioJson) {
-    cirpadVolumeThemeBratios = [parseFloat(loadeCirpadVolumeThemeRatioJson) * 2 - 1, 0, 0];
-  }
-  cirpadVolumeTheme.setBratios(cirpadVolumeThemeBratios);
-  cirpadVolumeTheme.onInput(cirpadVolumeThemeBratios);
-  //// cirpadVolumeTheme
-
-  ////  cirpadVolumeMetro
-  cirpadVolumeMetro.onInput = function(volumeMetroBratios){
-    let volumeMetroRatio = (volumeMetroBratios[0] + 1 ) / 2;
-    teplite.setEmit('volumeMetroRatio', volumeMetroRatio, cirpadVolumeMetro);
-    localStorage.setItem('volumeMetroRatio', volumeMetroRatio);
-  }
-  let cirpadVolumeMetroBratios = [teplite.volumeMetroRatio * 2 - 1, 0, 0];
-  let loadeCirpadVolumeMetroRatioJson = localStorage.getItem('volumeMetroRatio');
-  if (loadeCirpadVolumeMetroRatioJson) {
-    cirpadVolumeMetroBratios = [parseFloat(loadeCirpadVolumeMetroRatioJson) * 2 - 1, 0, 0];
-  }
-  cirpadVolumeMetro.setBratios(cirpadVolumeMetroBratios);
-  cirpadVolumeMetro.onInput(cirpadVolumeMetroBratios);
-  //// cirpadVolumeMetro
 
   let $beatTimeDisplay = $('.beat-time-display');
-  let $powerMeterScale = $('.power-meter-scale');
+  let $powerMeterScale = $('.power-meter-scale'); // TODO
   let $lagDisplay = $('.debug-display--lag-display');
   let $diffDisplay = $('.debug-display--diff-display');
 
 
+  //// simplex-switch
+  let $simplexSwitchButtonSimple = $('.simplex-switch--simple');
+  let $simplexSwitchButtonConplex = $('.simplex-switch--complex');
+  let isComplex = false;
+  updateSimplexClasses(); // init with class modificator depending isComplex
+  $simplexSwitchButtonSimple.on('click', () => {
+    onSimplexSwitchToggle();
+  });
+  $simplexSwitchButtonConplex.on('click', () => {
+    onSimplexSwitchToggle();
+  });
+  function onSimplexSwitchToggle() {
+    isComplex = !isComplex;
+    updateSimplexClasses();
+    remotedCirpadHaze.updateSize();
+    remotedCirpadPower.updateSize();
+    remotedCirpadDevuno.updateSize();
+    remotedCirpadDevdos.updateSize();
+    remotedCirpadDevtre.updateSize();
+    remotedCirpadDevqua.updateSize();
+    remotedCirpadDevqui.updateSize();
+    //TODO put in array and iterate it (and refactor all other stuff to use that array instead hardcode);
+  }
+  function updateSimplexClasses() {
+    $app.toggleClass('app--complex', isComplex);
+    $app.toggleClass('app--simple', !isComplex);
+  }
 
   function generateLagsHtml(lags) {
     let html = '';
@@ -553,7 +463,7 @@ teplite.initPromise.then(()=>{
     return teplite.readyPromise.then(teplite.timeSyncer.padSyncStartRoutine).then(()=>{
       teplite.squareTimer.start();
       // reset polyforte to default, because first-time user may accidentally fade it down, while no audio is played (during download)
-      remotedCirpadPower.setRemoteBratios([0, 0]);
+      remotedCirpadPower.setRemoteBratios([0, 0, 0]);
 
       let resyncIntervalId = setInterval(()=>{ // TODO: rework as always runned, with result smoothing
         teplite.gritter.addGrit('Ресинхронизация аудиотаймера...');
