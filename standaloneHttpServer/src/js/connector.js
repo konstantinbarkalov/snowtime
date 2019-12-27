@@ -19,6 +19,10 @@ function Connector($container) {
     $inputRoomname = $container.find('input.connector__roomname');
     $inputPassword = $container.find('input.connector__password');
     $inputUsername = $container.find('input.connector__username');
+
+    // load balancing
+    $selectServer[0].options.selectedIndex = Math.floor(Math.random() * $selectServer[0].options.length);
+
     $inputs = $inputServer.add($inputRoomname).add($inputPassword).add($inputUsername);
     $buttonConnect.on('click', ()=>{
       if (!isConnected) {
