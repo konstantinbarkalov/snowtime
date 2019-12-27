@@ -16,4 +16,4 @@ cd ./standaloneSioServer
 npm install
 cd ..
 echo preinit is done, now ready to start
-#./restart-all.sh
+#./restart-
