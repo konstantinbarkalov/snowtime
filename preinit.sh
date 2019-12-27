@@ -1,10 +1,10 @@
 #!/bin/bash
 sudo apt update
-sudo apt install git
+sudo apt install git -y
 cd ~
 curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
-sudo apt install nodejs
+sudo apt install nodejs -y
 node -v
 cd /srv
 git clone https://barkalov@bitbucket.org/barkalov/snowtime.fun.git
