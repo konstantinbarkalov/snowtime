@@ -1,5 +1,3 @@
 #!/bin/bash
-cd ./standaloneSioServer
-forever stop standaloneSioServer.js
-forever start standaloneSioServer.js
-cd ..
+./restart-sio-1.sh
+./restart-sio-2.sh

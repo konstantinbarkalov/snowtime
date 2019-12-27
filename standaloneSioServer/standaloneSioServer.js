@@ -12,7 +12,7 @@ let sio = Sio(null, {
 });
 let sioServer = SioServer(sio);
 
-let port = parseInt(process.env.PORT, 10) || 2020;
+let port = parseInt(process.env.SIO_PORT, 10) || 2020;
 
 //// Listen on provided port, on all network interfaces.
 sio.listen(port);
