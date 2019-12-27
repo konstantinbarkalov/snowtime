@@ -9,10 +9,10 @@ node -v
 cd /srv
 git clone https://barkalov@bitbucket.org/barkalov/snowtime.fun.git
 npm install forever -g
-cd snowtime.fun
-cd standaloneHttpServer
+cd ./snowtime.fun
+cd ./standaloneHttpServer
 npm install
-cd standaloneSioServer
+cd ./standaloneSioServer
 npm install
 cd ..
 echo preinit is done, now ready to start
