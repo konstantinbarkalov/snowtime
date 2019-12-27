@@ -1,6 +1,6 @@
 'use strict';
 const logger = require("./logger");
-const noCache = false; // for dev
+const noCache = false; // true is for dev
 let path = require('path');
 let express = require('express');
 let sassMiddleware = require('node-sass-middleware');
@@ -26,7 +26,7 @@ const expressStaticOptions = {};
 const oneHour = 1000 * 60 * 60 * 1;
 if (!noCache) {
   expressStaticOptions.immutable = true;
-  expressStaticOptions.maxAge = oneHour;
+  expressStaticOptions.maxAge = oneHour * 24 * 3; // three days cache
 }
 app.use(express.static(path.join(__dirname, 'static'), expressStaticOptions));
 
