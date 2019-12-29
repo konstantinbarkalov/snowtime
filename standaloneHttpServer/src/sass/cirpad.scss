@@ -190,6 +190,9 @@ $cirpad-active-pad-background-color: rgba(255, 255, 255, 0.1);
       text-shadow: 0 0 1px black, 0 0 2px black; //same as .cirpad__sub
       text-decoration: underline;
     }
+    &.remoted-cirpad__button--hidden {
+      display: none;
+    }
   }
 }
 

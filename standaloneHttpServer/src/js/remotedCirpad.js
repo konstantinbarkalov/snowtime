@@ -17,7 +17,12 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
   let isAutopilot = false;
   let isSend = true;
   let isReceive = true;
+  let isConnected = false;
   function init() {
+    teplite.on('stat.net.isConnected', (newIsConnected)=>{
+      isConnected = newIsConnected;
+      updateStyles();
+    })
     updateStyles();
   }
   function toggleAutopilot() {
@@ -65,6 +70,8 @@ function RemotedCirpad($container, mode, stepsCount, autopilot) {
     $buttonAutopilot.toggleClass('remoted-cirpad__button--active', isAutopilot && ! isInput);
     $buttonReceive.toggleClass('remoted-cirpad__button--active', isReceive && !isInput);
     $buttonSend.toggleClass('remoted-cirpad__button--active', isSend);
+    $buttonSend.toggleClass('remoted-cirpad__button--hidden', !isConnected);
+    $buttonReceive.toggleClass('remoted-cirpad__button--hidden', !isConnected);
   }
 
   let cirpad = new Cirpad($cirpad, mode, stepsCount);
