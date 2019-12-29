@@ -28,6 +28,7 @@ function Options($container) {
   let $cirpadSubvalueSystemAudioLag = $container.find('#cirpad-value--system-audio-lag .cirpad-value__subvalue');
   let $contentTop = $('.content.content--top'); // to see canvas when tweaking audio delay
   let isSyncingMetro = false;
+  let maxAudioLagPtime = 500;
   cirpadSystemAudioLag.onInput = function(audioLagBratios){
     if (audioLagBratios[2]) {
       //enable metronome on all devices during SystemAudioLag tuning
@@ -43,7 +44,7 @@ function Options($container) {
         $contentTop.removeClass('content--see-through');
       }
     }
-    let ptime = (audioLagBratios[0] + 1) * 250; // 0 to 500
+    let ptime = (audioLagBratios[0] + 1) / 2 * maxAudioLagPtime; // 0 to 500 msec;
     teplite.squareLooper.setAudioLag(ptime);
     let textSubvalue;
     if (ptime < 5) {
@@ -64,10 +65,12 @@ function Options($container) {
     $cirpadSubvalueSystemAudioLag.text(textSubvalue);
     localStorage.setItem('cirpadSystemAudioLagBratio', audioLagBratios[0]);
   }
-  let cirpadSystemAudioLagBratios = [-0.9,0];
+  let baseLatencyPtime = teplite.audioCtx.baseLatency * 1000; //default value from audiodriver to start with, mostly it will fit just fine
+  let baseLatencyBratio = baseLatencyPtime / maxAudioLagPtime * 2 - 1; // 0 to 500 msec => -1 to 1; TODO: sync this coefs with code that parses bratio back to msec value
+  let cirpadSystemAudioLagBratios = [baseLatencyBratio, 0, 0];
   let loadeCirpadSystemAudioLagBratioJson = localStorage.getItem('cirpadSystemAudioLagBratio');
   if (loadeCirpadSystemAudioLagBratioJson) {
-    cirpadSystemAudioLagBratios = [parseFloat(loadeCirpadSystemAudioLagBratioJson), 0];
+    cirpadSystemAudioLagBratios = [parseFloat(loadeCirpadSystemAudioLagBratioJson), 0, 0];
   }
   cirpadSystemAudioLag.setBratios(cirpadSystemAudioLagBratios);
   cirpadSystemAudioLag.onInput(cirpadSystemAudioLagBratios);
