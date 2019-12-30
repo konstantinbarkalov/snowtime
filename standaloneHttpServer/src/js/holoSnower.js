@@ -201,7 +201,10 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
     gl.uniform1i(textureTstLocation, 1);
     //gl.uniform1i(textureHardLightLocation, 1);
     //gl.uniform1i(textureSoftLightLocation, 2);
-    let pointSizeFactor = teplite.pointSizeFactor * 900 / Math.sqrt(snowflakesCount);
+
+    // TODO: redo it in more intelligent way
+    let limitedSnowflakesCount = Math.min(snowflakesCount, 7500); // to not to dim in HQ mode too much
+    let pointSizeFactor = teplite.pointSizeFactor * 900 / Math.sqrt(limitedSnowflakesCount);
     gl.uniform1f(pointSizeFactorLocation, pointSizeFactor);
     gl.uniform4f(color0Location, beatHashedRgbs[0].r, beatHashedRgbs[0].g, beatHashedRgbs[0].b, 1);
     gl.uniform4f(color1Location, beatHashedRgbs[1].r, beatHashedRgbs[1].g, beatHashedRgbs[1].b, 1);
