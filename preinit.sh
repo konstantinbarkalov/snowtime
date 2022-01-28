@@ -7,9 +7,9 @@ sudo bash nodesource_setup.sh
 sudo apt install nodejs -y
 node -v
 cd /srv
-git clone https://barkalov@bitbucket.org/barkalov/snowtime.fun.git
+git clone https://barkalov@bitbucket.org/barkalov/snowtime.space.git
 npm install forever -g
-cd ./snowtime.fun
+cd ./snowtime.space
 cd ./standaloneHttpServer
 npm install
 cd ./standaloneSioServer
