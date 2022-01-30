@@ -25,7 +25,7 @@ let Party = function(sio, ownerSocket, partyName, password) {
   let isSyncingMetro = false;
   let autopilotSeed = Math.random();
   function init() {
-    if (sio.sockets.adapter.rooms[partyName]) {
+    if (sio.sockets.adapter.rooms.has(partyName)) {
       throw new Error('Room already exist.');
     }
     startParty();
@@ -44,12 +44,13 @@ let Party = function(sio, ownerSocket, partyName, password) {
 
   }
   function disconnectCallback(reason, socket) {
-    let sockets = sio.sockets.adapter.rooms[partyName];
-    if (!sockets || !sockets.length) {
+    let sockets = sio.sockets.adapter.rooms.get(partyName);
+    if (!sockets || !sockets.size) {
       destroy();
     } else {
       if (socket === ownerSocket) {
-        setOwner(sockets[0]); // hope, that previous owner is not in list now already
+        const otherSocket = sockets.values().next().value;
+        setOwner(otherSocket); // hope, that previous owner is not in list now already
       }
     }
   }
@@ -143,8 +144,8 @@ let Party = function(sio, ownerSocket, partyName, password) {
     });
 
     return new Promise((resolve)=>{
-      let sockets = sio.sockets.adapter.rooms[partyName];
-      if (!sockets || !sockets.length) {
+      let sockets = sio.sockets.adapter.rooms.get(partyName);
+      if (!sockets || !sockets.size) {
         setOwner(socket);
       }
       logger.verbose('preparing to join');
@@ -171,11 +172,11 @@ let Party = function(sio, ownerSocket, partyName, password) {
   function destroy() {
     if (that.onDestroy) { that.onDestroy(); }
     sio.in(partyName).emit('partyOver');
-    let sockets = sio.sockets.adapter.rooms[partyName];
-    if (sockets && sockets.length) {
-      sockets.forEach((socket)=>{
+    let sockets = sio.sockets.adapter.rooms.get(partyName);
+    if (sockets && sockets.size) {
+      for (const socket of sockets.values()) {
         leave(socket);
-      });
+      }
     }
   }
   that.partyStartedPtime = null;

@@ -46,16 +46,15 @@ let SioServer = function(sio) {
     socket.emit('welcome', { message: 'Welcome!', id: socket.id });
   }
   sio.on('connection', function(socket) {
-    logger.info('Socket io user connected: ', Object.keys(sio.sockets.connected).length);
+    logger.info('Socket io user connected: ', sio.sockets.sockets.size);
     processConnection(socket);
   });
 
   function aliveIteration() {
-    Object.keys(sio.sockets.connected).forEach((socketKey) => {
-      let socket = sio.sockets.connected[socketKey];
+    for (const socket of sio.sockets.sockets.values()) {
       // yep, it's per each, not a loudcast, it's for debug
       socket.emit('alive', { message: 'still alive!', id: socket.id });
-    });
+    }
   }
   setInterval(aliveIteration, 10000);
 
@@ -69,7 +68,7 @@ let SioServer = function(sio) {
     //  TODO remove if everything is OK
     let partyNames = Object.keys(parties);
     let notFoundRoomPartyName = partyNames.find((partyName)=>{
-      return !sio.sockets.adapter.rooms[partyName];
+      return !sio.sockets.adapter.rooms.has(partyName);
     })
 
     if (notFoundRoomPartyName) {
@@ -92,9 +91,8 @@ let SioServer = function(sio) {
     let stat = {
       meanPartyTime: timesum / 1000 / partyKeys.length,
       partiesCount: partyKeys.length,
-      clientsCount: Object.keys(sio.sockets.sockets).length,
-      connectedsCount: Object.keys(sio.sockets.connected).length,
-      roomsCount: Object.keys(sio.sockets.adapter.rooms).length,
+      clientsCount: sio.sockets.sockets.size,
+      roomsCount: sio.sockets.adapter.rooms.size,
       memoryUsage: process.memoryUsage(),
       cpuUsage: process.cpuUsage(),
     }

@@ -9,10 +9,13 @@ let SioServer = require('./sioServer');
 let sio = Sio(null, {
   maxHttpBufferSize: 1024 * 10, //10 kbytes
   serveClient: false,
+  cors: {
+    origin: "http://159.69.37.243"
+  },
 });
 let sioServer = SioServer(sio);
 
-let port = parseInt(process.env.SIO_PORT, 10) || 2020;
+let port = parseInt(process.env.SIO_PORT, 10) || 2023;
 
 //// Listen on provided port, on all network interfaces.
 sio.listen(port);
