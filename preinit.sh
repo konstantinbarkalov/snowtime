@@ -15,7 +15,7 @@ sudo apt-get install nodejs -y
 node -v
 
 cd /srv
-git clone https://github.com/konstantinbarkalov/snowtime.space.git
+git clone https://github.com/konstantinbarkalov/snowtime.git
 npm install forever -g
 cd ./snowtime.space
 cd ./standaloneHttpServer
