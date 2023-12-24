@@ -6,7 +6,7 @@ const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 router.get('/', function(req, res, next) {
-  res.render('view', { title: 'snowtime.space' });
+  res.render('view', { title: 'snowtime.live' });
 });
 
 router.post('/reportError', jsonParser, urlencodedParser, function(req, res, next) {

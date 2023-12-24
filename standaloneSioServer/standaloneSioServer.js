@@ -10,7 +10,7 @@ let sio = Sio(null, {
   maxHttpBufferSize: 1024 * 10, //10 kbytes
   serveClient: false,
   cors: {
-    origin: "http://159.69.37.243"
+    origin: "http://snowtime.live"
   },
 });
 let sioServer = SioServer(sio);
