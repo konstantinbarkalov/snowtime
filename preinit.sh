@@ -17,7 +17,7 @@ node -v
 cd /srv
 git clone https://github.com/konstantinbarkalov/snowtime.git
 npm install forever -g
-cd ./snowtime.space
+cd ./snowtime
 cd ./standaloneHttpServer
 npm install
 cd ./standaloneSioServer
