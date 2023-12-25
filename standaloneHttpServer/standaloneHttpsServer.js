@@ -9,10 +9,10 @@ let os = require('os'); //TODO: check
 let app = require('./app');
 
 // Read the SSL certificate and private key files.
-const keyPath = '/secret/privkey.pem';
-const certPath = '/secret/fullchain.pem';
-const key = fs.readFileSync(path.resolve(__dirname, keyPath), 'utf8');
-const cert = fs.readFileSync(path.resolve(__dirname, certPath), 'utf8');
+const keyPath = './secret/privkey.pem';
+const certPath = './secret/fullchain.pem';
+const key = fs.readFileSync(path.join(__dirname, keyPath), 'utf8');
+const cert = fs.readFileSync(path.join(__dirname, certPath), 'utf8');
 const options = { key, cert };
 
 //// Get port from environment and store in Express.
