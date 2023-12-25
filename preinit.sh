@@ -20,6 +20,7 @@ npm install forever -g
 cd ./snowtime
 cd ./standaloneHttpServer
 npm install
+cd ..
 cd ./standaloneSioServer
 npm install
 cd ..
