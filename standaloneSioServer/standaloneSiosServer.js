@@ -2,11 +2,15 @@
 const logger = require("./logger");
 //// Module dependencies.
 
+
 let https = require('https');
 let fs = require('fs');
 let path = require('path');
 let os = require('os'); //TODO: check
 let app = require('./app');
+
+let Sio = require('socket.io');
+let SioServer = require('./sioServer');
 
 // Read the SSL certificate and private key files.
 const keyPath = './secret/privkey.pem';
@@ -18,24 +22,40 @@ const options = { key, cert };
 //// Get port from environment and store in Express.
 
 let httpsPort = parseInt(process.env.HTTPS_PORT, 10) || 443;
-app.set('port', httpsPort);
+let sioPort = parseInt(process.env.SIO_PORT, 10) || 2023;
 
-//// Create HTTPS server.
+const httpsServer = https.createServer(options);
 
-const httpsServer = https.createServer(options, app);
+
+let sio = Sio(httpsServer, {
+  maxHttpBufferSize: 1024 * 10, //10 kbytes
+  serveClient: false,
+  cors: {
+    origin: "https://snowtime.live"
+  },
+});
+let sioServer = SioServer(sio);
+
+
 
 //// Listen on provided port, on all network interfaces.
-
 httpsServer.listen(httpsPort);
-httpsServer.on('error', onError);
-httpsServer.on('listening', onListening);
+
+//// Listen on provided port, on all network interfaces.
+sio.listen(sioPort);
+
+
+
+
+sio.on('error', onError);
+sio.on('listening', onListening);
 //// Used in logging
 
-let bindName = (typeof httpsPort === 'string')
-  ? 'pipe ' + httpsPort
-  : 'port ' + httpsPort;
+let bindName = (typeof sioPort === 'string')
+  ? 'pipe ' + sioPort
+  : 'port ' + sioPort;
 
-//// Event listener for HTTPS httpsServer "error" event.
+//// Event listener for HTTPS httpServer "error" event.
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -57,9 +77,9 @@ function onError(error) {
   }
 }
 
-//// Event listener for HTTPS httpsServer "listening" event.
+//// Event listener for HTTPS httpServer "listening" event.
 
 function onListening() {
-  let addr = httpsServer.address().address;
+  let addr = sio.address().address;
   logger.info('Listening ' + bindName + ' on ' + addr + ' (with os.hostname=' + os.hostname() + ')');
 }

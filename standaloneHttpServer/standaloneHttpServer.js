@@ -8,8 +8,8 @@ let app = require('./app');
 
 //// Get port from environment and store in Express.
 
-let port = parseInt(process.env.HTTP_PORT, 10) || 80;
-app.set('port', port);
+let httpPort = parseInt(process.env.HTTP_PORT, 10) || 80;
+app.set('port', httpPort);
 
 //// Create HTTP server.
 
@@ -17,14 +17,14 @@ let httpServer = http.createServer(app);
 
 //// Listen on provided port, on all network interfaces.
 
-httpServer.listen(port);
+httpServer.listen(httpPort);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
 //// Used in logging
 
-let bindName = (typeof port === 'string')
-  ? 'pipe ' + port
-  : 'port ' + port;
+let bindName = (typeof httpPort === 'string')
+  ? 'pipe ' + httpPort
+  : 'port ' + httpPort;
 
 //// Event listener for HTTP httpServer "error" event.
 
