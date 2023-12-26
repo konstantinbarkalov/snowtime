@@ -1,3 +1,3 @@
 #!/bin/bash
-./restart-sio-1.sh
-./restart-sio-2.sh
+./restart-sios-1.sh
+./restart-sios-2.sh
