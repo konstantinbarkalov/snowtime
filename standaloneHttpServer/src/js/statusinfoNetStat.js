@@ -14,9 +14,9 @@ function Statusinfo($statusinfo) {
 
   let errorLevelLastSignalPtime = null;
   let humanizedStringLastSignalPtime = null;
-  let isAutoOpenOnError = true;
+  let isAutoOpenOnError = false;
   function init() {
-    isAutoOpenOnError = true;
+    isAutoOpenOnError = false;
     that.isOpened = false;
     $isConnected = $statusinfo.find('.statusinfo__is-connected');
     $lastSignalPtime = $statusinfo.find('.statusinfo__last-signal-ptime');

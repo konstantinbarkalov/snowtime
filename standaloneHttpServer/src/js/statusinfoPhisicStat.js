@@ -14,9 +14,9 @@ function Statusinfo($statusinfo) {
 
   let errorLevelDuty = null;
   let humanizedStringDuty = null;
-  let isAutoOpenOnError = true;
+  let isAutoOpenOnError = false;
   function init() {
-    isAutoOpenOnError = true;
+    isAutoOpenOnError = false;
     that.isOpened = false;
     $ps = $statusinfo.find('.statusinfo__ps');
     $dutyPercent = $statusinfo.find('.statusinfo__duty');

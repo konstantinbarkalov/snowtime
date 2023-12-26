@@ -8,9 +8,9 @@ function Statusinfo($statusinfo) {
   let $humanized = null;
   let $resync = null;
   let humanizedString = null;
-  let isAutoOpenOnError = true;
+  let isAutoOpenOnError = false;
   function init() {
-    isAutoOpenOnError = true;
+    isAutoOpenOnError = false;
     that.isOpened = false;
     $deviation = $statusinfo.find('.statusinfo__deviation');
     $close = $statusinfo.find('.statusinfo__close');

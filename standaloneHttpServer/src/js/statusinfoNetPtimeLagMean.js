@@ -8,9 +8,9 @@ function Statusinfo($statusinfo) {
   let $humanized = null;
   let $resync = null;
   let humanizedString = null;
-  let isAutoOpenOnError = true;
+  let isAutoOpenOnError = false;
   function init() {
-    isAutoOpenOnError = true;
+    isAutoOpenOnError = false;
     that.isOpened = false;
     $mean = $statusinfo.find('.statusinfo__mean');
     $close = $statusinfo.find('.statusinfo__close');
