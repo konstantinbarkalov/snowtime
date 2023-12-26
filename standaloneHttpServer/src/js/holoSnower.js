@@ -74,7 +74,7 @@ function holoSnower(holoCanvasCtx, holoCanvasWidth, holoCanvasHeight, holoCanvas
 
     vertexShader = webglUtils.compileShader(gl, shaderSourceset.vertex.snow, gl.VERTEX_SHADER);
     fragmentShader = webglUtils.compileShader(gl, shaderSourceset.fragment.snow, gl.FRAGMENT_SHADER);
-    snowflakesCount = Math.pow(teplite.videoQualityRatio, 2) * 10000;
+    snowflakesCount = Math.pow(teplite.videoQualityRatio, 2) * 13000;
 
 
     // setup GLSL program
