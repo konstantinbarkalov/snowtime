@@ -16,11 +16,15 @@ const keyPath = './secret/privkey.pem';
 const certPath = './secret/fullchain.pem';
 const key = fs.readFileSync(path.join(__dirname, keyPath), 'utf8');
 const cert = fs.readFileSync(path.join(__dirname, certPath), 'utf8');
-const options = { key, cert };
+const options = { 
+  key, 
+  cert, 
+  //requestCert: false,     
+  //rejectUnauthorized: false,
+ };
 
 //// Get port from environment and store in Express.
 
-let httpsPort = parseInt(process.env.HTTPS_PORT, 10) || 443;
 let sioPort = parseInt(process.env.SIO_PORT, 10) || 2023;
 
 const httpsServer = https.createServer(options);
@@ -33,16 +37,13 @@ let sio = Sio(httpsServer, {
     origin: "https://snowtime.live"
   },
 });
+
 let sioServer = SioServer(sio);
 
 
 
 //// Listen on provided port, on all network interfaces.
-httpsServer.listen(httpsPort);
-
-//// Listen on provided port, on all network interfaces.
-sio.listen(sioPort);
-
+httpsServer.listen(sioPort);
 
 
 
