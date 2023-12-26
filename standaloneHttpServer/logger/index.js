@@ -14,7 +14,7 @@ let logger = Winston.createLogger({
 logger.dbg = Winston.createLogger({ //secondary logger
   transports: [
     new Winston.transports.Console({
-      level: "debug",
+      //level: "debug",
       //handleExceptions: true,
       json: false,
       colorize: true
