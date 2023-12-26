@@ -2,7 +2,7 @@
 const logger = require("./logger");
 //// Module dependencies.
 
-let http = require('https');
+let http = require('http');
 let https = require('https');
 let fs = require('fs');
 let path = require('path');
